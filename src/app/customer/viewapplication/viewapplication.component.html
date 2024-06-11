@@ -1,0 +1,82 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-start">
+    <c-container>
+      <c-row>
+        <c-col lg="20" md="20" xl="20">
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-view-tab" data-toggle="tab" href="#nav-view" role="tab" aria-controls="nav-view" aria-selected="true">View</a>
+                  <a class="nav-item nav-link" id="nav-funds-tab" data-toggle="tab" href="#nav-funds" role="tab" aria-controls="nav-funds" aria-selected="false">Funds Available</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+                  <h1>VIEW APPLICATION</h1>
+                  <div class="h-section d-flex flex-column" style="height: calc(100vh - 200px); overflow-y: auto;">
+                    <!-- Table displaying project details -->
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <tbody>
+                          <!-- Example row -->
+                          <tr>
+                            <td style="width: 50%;"><strong>TITLE</strong></td>
+                            <td style="width: 50%;">Example Title</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>ORGANIZATION TYPE</strong></td>
+                            <td style="width: 50%;">Example Org Type</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>ORGANIZATION NAME</strong></td>
+                            <td style="width: 50%;">Example Org Name</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>COUNTRY</strong></td>
+                            <td style="width: 50%;">Example Country</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>TYPE OF FUNDING</strong></td>
+                            <td style="width: 50%;">Example Funding</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>AREA OF RESEARCH</strong></td>
+                            <td style="width: 50%;">Example Research Area</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>STATUS</strong></td>
+                            <td style="width: 50%;">Example Status</td>
+                          </tr>
+                          <tr>
+                            <td style="width: 50%;"><strong>ACTIONS</strong></td>
+                            <td style="width: 50%;">
+                              <form action="#/editForm">
+                                <button type="submit" cButton color="warning">EDIT</button>
+                              </form>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-funds" role="tabpanel" aria-labelledby="nav-funds-tab">
+                  <!-- Content for Funds Available tab -->
+                  <h2>Funds Available</h2>
+                  <p>Details about funds available will be displayed here.</p>
+                </div>
+              </div>
+            </c-card-body>
+          </c-card>
+        </c-col>
+      </c-row>
+    </c-container>
+  </div>
+  
+  
+  
+  
+  
+
+
