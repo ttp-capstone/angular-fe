@@ -16,7 +16,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Projects',
-    url: '/register/register',
+    url: '/project',
     iconComponent: { name: 'cil-Tags' }
   },
   {

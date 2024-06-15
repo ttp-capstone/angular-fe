@@ -42,6 +42,11 @@ export const routes: Routes = [
         loadChildren: () => import('./customer/viewapplication/routes').then((m) => m.routes)
 
       },
+      {
+        path:'project',
+        loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
+
+      },
     ]
   },
   
