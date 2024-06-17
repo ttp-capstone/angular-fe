@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       (response) => {
         if (response.id != null) {
           alert("Hello " + response.fullName);
-          this.router.navigateByUrl("/dashboard");
+          this.router.navigateByUrl("my/dashboard");
         }
       },
       (error) => {

@@ -1,0 +1,78 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Form Control</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm [formGroup]="createProjectForm" (ngSubmit)="submitForm()">
+              
+              <c-row>
+                <c-col xs="6">
+                    <div class="mb-3">
+                        <label for="title">Project Title</label>
+                        <input cFormControl
+                               id="title"
+                               placeholder="Please enter title"
+                               type="text" formControlName="title"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="description">Description</label>
+                        <textarea cFormControl id="description" rows="3" formControlName="description"></textarea>
+                      </div>
+                    <div class="mb-3">
+                        <label for="organizationType">Organization Type</label>
+                        <select aria-label="Select organization type" id="organizationType" cFormControl cSelect formControlName="organizationType">
+                            <option value="Researche">Research</option>
+                            <option value="Startup">Startup</option>
+                            <option value="Company">Company</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="organizationName">Organization Name</label>
+                        <input cFormControl
+                               id="title"
+                               placeholder="Please enter organization name"
+                               type="text" formControlName="organizationName"
+                        />
+                      </div>
+                </c-col>
+                <c-col xs="6">
+                    <div class="mb-3">
+                        <label for="country">Country</label>
+                        <input cFormControl
+                               id="country"
+                               placeholder="Please enter country"
+                               type="text" formControlName="country"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="typeOfFunding">Type of funding looking for</label>
+                        <select aria-label="Select type of funding required" id="typeOfFunding" cFormControl cSelect formControlName="typeOfFunding">
+                            <option value="Grant">Grant</option>
+                            <option value="Loan">Loan</option>
+                            <option value="Equity">Equity</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="areaOfResearch">Area of research</label>
+                        <select aria-label="Select type of funding required" id="areaOfResearch" cFormControl cSelect formControlName="areaOfResearch">
+                            <option value="1">Health</option>
+                            <option value="2">Real Estate</option>
+                            <option value="3">Finance</option>
+                        </select>
+                    </div>
+                </c-col>
+              </c-row>
+          
+              <input cButton color="primary" type="submit" value="Submit"/>
+
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    
+  </c-row>
+  
+  

@@ -11,7 +11,7 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'dashboard',
+        path: 'my/dashboard',
         loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
       },
       {
@@ -43,10 +43,15 @@ export const routes: Routes = [
 
       },
       {
-        path:'project',
+        path:'my/projects',
         loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
 
       },
+      // {
+      //   path:'my/projects/create',
+      //   loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
+
+      // },
     ]
   },
   
