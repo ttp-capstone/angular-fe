@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,18 @@ export class ProjectService {
 
 
   createProject(projectData: any): Observable<any> {
+    const jwtToken = localStorage.getItem('jwt');
+
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      console.log("deocded"+ decoded);
+      
+    }
     return this.http.post<any>(`${this.apiUrl}my/projects`, projectData, {
       headers: this.createAuhtorizationHeader()
 
     });
+    
   }
 
   getProject(id: string): Observable<any> {
@@ -43,6 +52,18 @@ export class ProjectService {
   }
 
   allProject(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/projects`);
+    const jwtToken = localStorage.getItem('jwt');
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      // console.log("deocded"+ decoded.username);
+      
+    }else{
+      console.log("no jwt");
+    }
+
+     return this.http.post<any>(`${this.apiUrl}my/projects`, {
+      headers: this.createAuhtorizationHeader() 
+
+    });
   }
 }
