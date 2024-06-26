@@ -26,6 +26,20 @@ export const routes: Routes = [
         data: {
           title: 'project'
         }
+      },
+      {
+        path: 'edit/:id',
+        loadComponent: () => import('./edit-project/edit-project.component').then(m => m.EditProjectComponent),
+        data: {
+          title: 'project'
+        }
+      },
+      {
+        path: ':id',
+        loadComponent: () => import('./view-project/view-project.component').then(m => m.ViewProjectComponent),
+        data: {
+          title: 'project'
+        }
       }
     ]
   }

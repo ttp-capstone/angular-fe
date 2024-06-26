@@ -1,51 +1,49 @@
-<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-start">
-  <c-container>
-    <c-row class="">
-      <c-col lg="20" md="20" xl="20">
-        <c-card class="mx-4">
-          <c-card-body class="p-4">
-            
-            <h1>MY PROJECTS</h1>
-            <div class="h-section">
-            
-            <button [active]="true" cButton color="primary" routerLink="/my/projects/create">New Application</button>
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Table</strong> <small>Basic example</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          Using the most basic table CoreUI, here&#39;s how <code>cTable</code>-based
+          tables look in CoreUI.
+        </p>
+        <button [active]="true" cButton color="primary" routerLink="/my/projects/create">New Application</button>
            
-          </div>
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>TITLE</th>
-                  <th>ORGANIZATION TYPE</th>
-                  <th>ORGANIZATION NAME</th>
-                  <th>COUNTRY</th>
-                  <th>TYPE OF FUNDING</th>
-                  <th>AREA OF REASEARCH</th>
-                  <th>Status</th>
-                  <th>VIEW</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Example row -->
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                
-                  <td><form  action="#/editForm"><button type="submit" cButton color="warning">EDIT</button></form><form action="#/viewapplication/viewapplication"> <button type="submit" cButton color="success">VIEW</button></form></td>
-                </tr>
-                <!-- Add more rows as needed -->
-              </tbody>
-            </table>
-          </c-card-body>
-        </c-card>
-      </c-col>
-    </c-row>
-  </c-container>
-</div>
+          <table cTable>
+            <thead>
+            <tr>
+              <th scope="col">TITLE</th>
+              <th scope="col">ORG TYPE</th>
+              <th scope="col">ORG NAME</th>
+              <th scope="col">COUNTRY</th>
+              <th scope="col">TYPE OF FUNDING</th>
+              <th scope="col">Status</th>
+              <th scope="col">VIEW</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let project of projects">
+                <td>{{ project.title }}</td>
+                <td>{{ project.organizationType }}</td>
+                <td>{{ project.organizationName }}</td>
+                <td>{{ project.country }}</td>
+                <td>{{ project.fundingType }}</td>
+                <td>{{ project.status }}</td>
+                <td>
+                  <button cButton color="success" (click)="viewProject(project)">VIEW</button>
+                  <button cButton color="warning" (click)="editProject(project)">EDIT</button>
+                  
+                </td>
+              </tr>
+           
+            </tbody>
+          </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  </c-row>
 
 
 

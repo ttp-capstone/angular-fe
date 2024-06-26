@@ -15,14 +15,18 @@ export const routes: Routes = [
         loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
       },
       {
-        path: 'theme',
-        loadChildren: () => import('./customer/theme/routes').then((m) => m.routes)
+        path: 'admin/dashboard',
+        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes)
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('./customer/account/routes').then((m) => m.routes)
       },
       
-      {
-        path: 'widgets',
-        loadChildren: () => import('./customer/widgets/routes').then((m) => m.routes)
-      },
+      // {
+      //   path: 'widgets',
+      //   loadChildren: () => import('./customer/widgets/routes').then((m) => m.routes)
+      // },
       
       // {
       //   path: 'pages',
@@ -47,11 +51,11 @@ export const routes: Routes = [
         loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
 
       },
-      // {
-      //   path:'my/projects/create',
-      //   loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
+      {
+        path:'my/funding',
+        loadChildren: () => import('./customer/funding/routes').then((m) => m.routes)
 
-      // },
+      },
     ]
   },
   

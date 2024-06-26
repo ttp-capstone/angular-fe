@@ -7,7 +7,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-speedometer' },
     badge: {
       color: 'info',
-      text: 'NEW'
+      text: ''
     }
   },
   {
@@ -19,13 +19,13 @@ export const navItems: INavData[] = [
     url: 'my/projects',
     iconComponent: { name: 'cil-Tags' }
   },
-  {
-    name: 'Funds',
-    url: '/lok',
-    linkProps: { fragment: 'headings' },
-    iconComponent: { name: 'cil-dollar' }
-  }
-  ,
+  // {
+  //   name: 'Funds',
+  //   url: '/lok',
+  //   linkProps: { fragment: 'headings' },
+  //   iconComponent: { name: 'cil-dollar' }
+  // }
+  // ,
   {
     title: true,
     name: 'Settings'
@@ -36,25 +36,25 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-user' },
     children: [
       {
-        name: 'Login',
-        url: '/login',
+        name: 'Settings',
+        url: '/my/account',
         icon: 'nav-icon-bullet'
       },
-      {
-        name: 'Register',
-        url: '/register',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'nav-icon-bullet'
-      }
+      // {
+      //   name: 'Register',
+      //   url: '/register',
+      //   icon: 'nav-icon-bullet'
+      // },
+      // {
+      //   name: 'Error 404',
+      //   url: '/404',
+      //   icon: 'nav-icon-bullet'
+      // },
+      // {
+      //   name: 'Error 500',
+      //   url: '/500',
+      //   icon: 'nav-icon-bullet'
+      // }
     ]
   },
   {
@@ -66,6 +66,5 @@ export const navItems: INavData[] = [
     name: 'Logout',
     url: 'https://coreui.io/angular/docs/5.x/',
     iconComponent: { name: 'cil-AccountLogout' },
-    attributes: { target: '_blank' }
   }
 ];

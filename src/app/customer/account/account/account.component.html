@@ -1,0 +1,35 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Form Control</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm [formGroup]="editAccountForm" (ngSubmit)="submitForm()">
+              
+              <c-row>
+                <c-col xs="12">
+                    <div class="mb-3">
+                        <label for="title">Project Title</label>
+                        <input cFormControl
+                               id="title"
+                               placeholder="Please enter title"
+                               type="text" formControlName="title"
+                        />
+                      </div>
+                   
+                   
+                </c-col>
+               
+              </c-row>
+          
+              <input cButton color="primary" type="submit" value="Submit"/>
+
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    
+  </c-row>
+  
+  

@@ -31,7 +31,7 @@ export class CreateProjectComponent {
       organizationType: ['', Validators.required],
       organizationName: ['', Validators.required],
       country: ['', Validators.required],
-      typeOfFunding: [],
+      fundingType: [],
       areaOfResearch: []
     });
   }
@@ -40,13 +40,10 @@ export class CreateProjectComponent {
     if (this.createProjectForm.valid) {
       this.service.createProject(this.createProjectForm.value).subscribe(
         (response) => {
-          console.log(response);
-          // if (response.token != null) {
-          //   // alert("Hello, Your token is " + response.token);
-          //   const jwtToken = response.token;
-          //   localStorage.setItem('jwt', jwtToken);
-          //   this.router.navigateByUrl('my/dashboard');
-          // }
+          console.log('Project created successfully:', response);
+          // Redirect to dashboard or any other route after successful project creation
+          this.router.navigate(['my/projects']); 
+         
         },
         (error) => {
           console.error('Could not create project', error);

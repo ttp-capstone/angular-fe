@@ -1,0 +1,90 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Angular Form Control</strong>
+        </c-card-header>
+        <c-card-body>
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">
+                    <h2 class="card-title">{{ project.title }}</h2>
+                    <div *ngIf="project.status === 'Pending' || project.status == null">
+                        <button class="btn btn-primary mr-2" (click)="searchFunding(project)">Search grants</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label>Description:</label>
+                        <p>{{ project.description }}</p>
+                        </div>
+                        <div class="form-group">
+                        <label>Organization Type:</label>
+                        <p>{{ project.organizationType }}</p>
+                        </div>
+                        <div class="form-group">
+                        <label>Organization Name:</label>
+                        <p>{{ project.organizationName }}</p>
+                        </div>
+                        <div class="form-group">
+                        <label>Country:</label>
+                        <p>{{ project.country }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label>Funding Type:</label>
+                        <p>{{ project.fundingType }}</p>
+                        </div>
+                        <div class="form-group">
+                        <label>Area of Research:</label>
+                        <p>{{ project.areaOfResearch }}</p>
+                        </div>
+                        <!-- Add more fields as needed -->
+                    </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary mr-2" (click)="editProject(project)">Edit Project</button>
+                    <button class="btn btn-secondary" (click)="goBack()">Back to Projects</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Applied Funding Info</h2>
+                </div>
+                <div class="card-body">
+                    <table [striped]="true" cTable>
+                        <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Program Name</th>
+                          <th scope="col">Application Date</th>
+                          <th scope="col">Status</th>
+                          <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let funding of appliedFunding">
+                          <th scope="row">1</th>
+                          <td>{{ funding.funding.programName }}</td>
+                          <td>{{ funding.applicationDate | date:'yyyy-MM-dd'}}</td>
+                          <td>{{ funding.status}}</td>
+                          <td> <button mat-button color="primary" (click)="viewFunding(project.id, funding.funding)">
+                            View Details
+                          </button></td>
+                        </tr>
+                       
+                        </tbody>
+                      </table>
+                </div>
+                
+            </div>
+  </c-card-body>
+  </c-card>
+  </c-col>
+  </c-row>
+  
+  

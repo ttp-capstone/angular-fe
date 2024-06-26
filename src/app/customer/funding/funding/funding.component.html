@@ -1,0 +1,40 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12" >
+        <c-card  class="mb-4">
+          <c-card-header>
+            <strong>Angular Card</strong> <small>kitchen sink</small>
+          </c-card-header>
+          <c-card-body>
+            <p class="text-body-secondary small">
+              Combine and match many content types to build the card you need, or
+              throw everything in there. Shown below are image styles, blocks, text
+              styles, and a list group—all wrapped in a fixed-width card.
+            </p>
+            <c-row class="g-4">
+              <c-col *ngFor="let fund of funding">
+                  <c-card [cBorder]="{top: {color: 'info', width: 3}}" style="width: 36rem;" >
+                    <c-card-header>{{fund.status}}</c-card-header>
+                    <c-card-body>
+                      <h5 cCardTitle>{{fund.programName}}</h5>
+                      <p cCardText>
+                        {{fund.fundingMinistry}}
+                      </p>
+                      
+                    </c-card-body>
+                   
+                    <c-card-body>
+                      
+                      <button [color]="'primary'" cButton (click)="viewFunding(projectId, fund)">View Details</button>
+                      <!-- <button [color]="'success'" cButton>Apply</button> -->
+                    </c-card-body>
+                    <c-card-footer class="text-body-secondary">
+                        2 days ago
+                    </c-card-footer>
+                  </c-card>
+                </c-col>
+              
+              </c-row>
+          </c-card-body>
+        </c-card>
+      </c-col>
+</c-row>
