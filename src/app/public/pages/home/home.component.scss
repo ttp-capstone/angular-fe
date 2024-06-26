@@ -1,0 +1,113 @@
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#backgroundVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;}
+
+.brand-message{
+  color: #dcdcdc;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 0;
+}
+
+.home-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial, sans-serif';
+    color: #333;
+  
+    .header-photo {
+      width: 500px; /* Adjust width as needed */
+      height: 200px; /* Adjust height as needed by parth */
+      margin: 0 auto 90px; /* parth says Center horizontally and add bottom margin, rn its 90 */
+      display: block; 
+    }
+  
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+  
+    .brand-message {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+  
+    .start-journey {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #1b3325;
+      margin-bottom: 20px;
+    }
+  
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+  
+      .feature {
+        max-width: 200px;
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+  
+        h2 {
+          font-size: 1.8rem;
+          margin-bottom: 10px;
+          color: #9cccb0;
+        }
+  
+        p {
+          font-size: 1.1rem;
+          color: #333;
+        }
+      }
+    }
+  
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+  
+      .btn-login,
+      .btn-register {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background-color: #1b3325;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #000000;
+        }
+      }
+    }
+  }
+  

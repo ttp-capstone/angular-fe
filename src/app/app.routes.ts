@@ -2,7 +2,13 @@ import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 
 export const routes: Routes = [
-
+  {
+    path: '',
+    loadComponent: () => import('./public/pages/home/home.component').then(m => m.HomeComponent),
+    data: {
+      title: 'Home Page'
+    }
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -10,6 +16,7 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      
       {
         path: 'my/dashboard',
         loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
@@ -75,6 +82,13 @@ export const routes: Routes = [
     // },
     {
       path: 'login',
+      loadComponent: () => import('./public/pages/login-customer/login-customer.component').then(m => m.LoginComponent),
+      data: {
+        title: 'Login Page'
+      }
+    },
+    {
+      path: 'admin/login',
       loadComponent: () => import('./public/pages/login/login.component').then(m => m.LoginComponent),
       data: {
         title: 'Login Page'
@@ -87,6 +101,21 @@ export const routes: Routes = [
         title: 'Register Page'
       }
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    {
+      path: 'about-us',
+      loadComponent: () => import('./public/pages/about/about.component').then(m => m.AboutComponent),
+      data: {
+        title: 'Register Page'
+      }
+    },
+    {
+      path: 'contact-us',
+      loadComponent: () => import('./public/pages/contact-us/contact-us.component').then(m => m.ContactUsComponent),
+      data: {
+        title: 'Register Page'
+      }
+    },
+    
+    // { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: '**', redirectTo: '404' }
 ];

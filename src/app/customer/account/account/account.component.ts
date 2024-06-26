@@ -9,8 +9,8 @@ import { ActivatedRoute, RouterModule, Router } from '@angular/router';
   selector: 'app-edit-project',
   standalone: true,
   imports: [RouterModule, FormSelectDirective, RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, ButtonDirective],
-  templateUrl: './edit-project.component.html',
-  styleUrl: './edit-project.component.scss'
+  templateUrl: './account.component.html',
+  styleUrl: './account.component.scss'
 })
 export class AccountComponent {
   editAccountForm!: FormGroup;
