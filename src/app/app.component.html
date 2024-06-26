@@ -1,0 +1,53 @@
+<header>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="assets/TTP_Icon_RGB.png" alt="Logo" style="height: 30px;">
+    </a>
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/resources">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact-us">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+  
+</nav>
+</header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+
+<footer class="footer bg-dark text-white text-center">
+  <div class="container">
+    <p>&copy; 2024 ttp.com. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://twitter.com/your_twitter_handle" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:contact@yourdomain.com" class="social-link"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
