@@ -17,7 +17,8 @@
         <td>{{ project.id }}</td>
         <td>{{ project.title }}</td>
         <td>{{ project.status }}</td>
-        <td><a [routerLink]="['/view-application']">View Application</a></td>
+        <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
+        <td><a [routerLink]="['/view-application', project.id]">View Application</a></td>
       </tr>
     </tbody>
   </table>

@@ -15,7 +15,7 @@ export const navItems: INavData[] = [
     name: 'Menu'
   },
   {
-    name: 'Applications',
+    name: 'Projects',
     url: '/applications',
     iconComponent: { name: 'cil-Tags' }
   },

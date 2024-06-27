@@ -14,45 +14,49 @@ import { AppComponent } from 'src/app/app.component';
 
 
 
-interface Application {
+interface Funding {
   id: number;
-  userId: number;
-  title: string;
-  description: string;
-  organizationType: string;
-  organizationName: string;
-  country: string;
+  programName: string;
+  fundingMinistry: string;
   fundingType: string;
+  fundingAmount: number;
+  deadline: string;
+  overview: string;
+  details: string;
+  qualifications: string;
   status: string;
+  orgType: string;
   createdAt: string;
 }
 
 
 @Component({
-  selector: 'app-view-application',
+  selector: 'app-view-funding',
   standalone: true,
   imports: [CommonModule, FormsModule,HttpClientModule],
-  templateUrl: './view-application.component.html',
-  styleUrls: ['./view-application.component.scss']
+  templateUrl: './view-funding.component.html',
+  styleUrls: ['./view-funding.component.scss']
 })
 
-export class ViewApplicationComponent implements OnInit {
+export class ViewFundingComponent implements OnInit {
 
-  applicationId: number = 0;
-  application: Application = {
+  fundingId: number = 0;
+  funding: Funding = {
     id: 0,
-    userId: 0,
-    title: '',
-    description: '',
-    organizationType: '',
-    organizationName: '',
-    country: '',
+    programName: '',
+    fundingMinistry: '',
     fundingType: '',
+    fundingAmount: 0,
+    deadline: '',
+    overview: '',
+    details: '',
+    qualifications: '',
     status: '',
+    orgType: '',
     createdAt: ''
   };
 
-  updatedStatus: string = '';
+  updatedStatus: string = 'Pending'; // Default value
 
   constructor(
     private route: ActivatedRoute,
@@ -60,33 +64,33 @@ export class ViewApplicationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve application ID from route parameter
-    this.applicationId = Number(this.route.snapshot.paramMap.get('id'));
+    // Retrieve funding ID from route parameter
+    this.fundingId = Number(this.route.snapshot.paramMap.get('id'));
 
-    // Fetch application details based on ID
-    this.fetchApplicationDetails();
+    // Fetch funding details based on ID
+    this.fetchFundingDetails();
   }
 
-  fetchApplicationDetails() {
-    this.httpClient.get<Application>(`http://localhost:8005/auth/admin/projects/${this.applicationId}`)
+  fetchFundingDetails() {
+    this.httpClient.get<Funding>(`http://localhost:8005/auth/admin/funding/${this.fundingId}`)
       .subscribe(
         (response) => {
           console.log(response);
-          this.application = response;
-          this.updatedStatus = this.application.status; // Set initial value for updatedStatus
+          this.funding = response;
+          this.updatedStatus = this.funding.status; // Set initial value for updatedStatus
         },
         (error) => {
-          console.error('Failed to fetch application details', error);
+          console.error('Failed to fetch funding details', error);
         }
       );
   }
 
   onSubmit() {
-    // Update the application status
-    this.application.status = this.updatedStatus;
+    // Update the funding status
+    this.funding.status = this.updatedStatus;
 
     // Send updated status to backend API for saving (assuming a PUT request)
-    this.httpClient.put(`http://localhost:8005/auth/admin/projects/${this.applicationId}`, this.application)
+    this.httpClient.put(`http://localhost:8005/auth/admin/funding/${this.fundingId}`, this.funding)
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);
@@ -100,6 +104,7 @@ export class ViewApplicationComponent implements OnInit {
   }
 }
 
+
 @NgModule({
   declarations: [
     // AppComponent
@@ -108,7 +113,7 @@ export class ViewApplicationComponent implements OnInit {
     BrowserModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ViewApplicationComponent // Add this line if you are not using standalone components
+    ViewFundingComponent // Add this line if you are not using standalone components
   ],
   providers: [],
   bootstrap: []

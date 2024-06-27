@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="my-4">Funding Details</h1>
+  
+  <div class="card">
+    <div class="card-header">
+      <h2>Program Name: {{ funding.programName }}</h2>
+    </div>
+    <div class="card-body">
+      <p><strong>Funding ID:</strong> {{ funding.id }}</p>
+      <p><strong>Created At:</strong> {{ funding.createdAt | date }}</p>
+      <p><strong>Deadline:</strong> {{ funding.deadline | date }}</p>
+      <p><strong>Details:</strong> {{ funding.details }}</p>
+      <p><strong>Funding Amount:</strong> {{ funding.fundingAmount }}</p>
+      <p><strong>Funding Ministry:</strong> {{ funding.fundingMinistry }}</p>
+      <p><strong>Funding Type:</strong> {{ funding.fundingType }}</p>
+      <p><strong>Organization Type:</strong> {{ funding.orgType }}</p>
+      <p><strong>Overview:</strong> {{ funding.overview }}</p>
+      <p><strong>Qualifications:</strong> {{ funding.qualifications }}</p>
+      <p><strong>Status:</strong> {{ funding.status }}</p>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h3>Update Funding Status</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" id="status" [(ngModel)]="updatedStatus" name="status">
+            <option>Pending</option>
+            <option>Approved</option>
+            <option>Rejected</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+      </form>
+    </div>
+  </div>
+</div>

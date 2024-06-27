@@ -32,8 +32,12 @@ export const routes: Routes = [
         loadComponent: () => import('./admin/dashboard/dashboard/views/users/users.component').then(m => m.UsersComponent),
       },
       {
-        path: 'view-application',
+        path: 'view-application/:id',
         loadChildren: () => import('./admin/dashboard/dashboard/views/view-application/routes').then((m) => m.routes)
+      },
+      {
+        path: 'view-funding/:id',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/view-funding/routes').then((m) => m.routes)
       },
       {
         path: 'theme',

@@ -21,7 +21,7 @@ export const routes: Routes = [
         loadComponent: () => import('./views/users/users.component').then(m => m.UsersComponent),
       },
       {
-        path: 'view-application',
+        path: 'view-application/:id',
         loadChildren: () => import('./views/view-application/routes').then((m) => m.routes)
       },
       {

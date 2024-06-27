@@ -1,24 +1,24 @@
 <div class="container">
-  <h1 class="my-4">Application Details</h1>
+  <h2 class="my-4">Project Details</h2>
   
   <div class="card">
     <div class="card-header">
-      <h2>Application Title: {{ application.title }}</h2>
+      <h2>Project Title: {{ application.title }}</h2>
     </div>
     <div class="card-body">
-      <p><strong>Application ID:</strong> {{ application.id }}</p>
+      <p><strong>Project ID:</strong> {{ application.id }}</p>
       <p><strong>Description:</strong> {{ application.description }}</p>
       <p><strong>Organization:</strong> {{ application.organizationName }}</p>
       <p><strong>Country:</strong> {{ application.country }}</p>
       <p><strong>Funding Type:</strong> {{ application.fundingType }}</p>
       <p><strong>Status:</strong> {{ application.status }}</p>
-      <p><strong>Application Date:</strong> {{ application.createdAt | date }}</p>
+      <p><strong>Project Date:</strong> {{ application.createdAt | date }}</p>
     </div>
   </div>
 
   <div class="card mt-4">
     <div class="card-header">
-      <h3>Update Application Status</h3>
+      <h3>Update Project Status</h3>
     </div>
     <div class="card-body">
       <form (ngSubmit)="onSubmit()">
