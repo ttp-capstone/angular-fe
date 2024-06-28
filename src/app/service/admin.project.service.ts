@@ -72,4 +72,10 @@ export class ProjectServiceAdmin {
       return of([]);
     }
   }
+
+  updateProjectStatus(projectId: number, project: any): Observable<any> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.put<any>(`${this.apiUrl}/admin/projects/${projectId}`, project, { headers });
+  }
+  
 }

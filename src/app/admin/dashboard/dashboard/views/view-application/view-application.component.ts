@@ -10,6 +10,7 @@ import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from 'src/app/app.component';
+import { ProjectServiceAdmin } from 'src/app/service/admin.project.service';
 
 
 
@@ -86,7 +87,7 @@ export class ViewApplicationComponent implements OnInit {
     this.application.status = this.updatedStatus;
 
     // Send updated status to backend API for saving (assuming a PUT request)
-    this.httpClient.put(`http://localhost:8005/auth/admin/projects/${this.applicationId}`, this.application)
+    this.httpClient.post(`http://localhost:8005/auth/admin/projects/${this.applicationId}`, this.application)
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);

@@ -90,7 +90,7 @@ export class ViewFundingComponent implements OnInit {
     this.funding.status = this.updatedStatus;
 
     // Send updated status to backend API for saving (assuming a PUT request)
-    this.httpClient.put(`http://localhost:8005/auth/admin/funding/${this.fundingId}`, this.funding)
+    this.httpClient.post(`http://localhost:8005/auth/admin/funding/${this.fundingId}`, this.funding)
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);

@@ -69,8 +69,10 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Logout',
-    url: 'https://coreui.io/angular/docs/5.x/',
+    url: '/logout',  
     iconComponent: { name: 'cil-AccountLogout' },
-    attributes: { target: '_blank' }
+    attributes: { target: '_self' }  
   }
 ];
+
+

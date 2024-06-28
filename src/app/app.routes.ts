@@ -50,6 +50,11 @@ export const routes: Routes = [
         loadChildren: () => import('./admin/dashboard/dashboard/views/theme/routes').then((m) => m.routes),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'logout',
+        loadComponent: () => import('./admin/dashboard/layout/logout/logout.component').then(m => m.LogoutComponent)
+        // canActivate: [AuthGuard]
+      },
       
     ]
     },
