@@ -20,6 +20,8 @@ import {
   RowComponent,
   TableDirective,
 } from '@coreui/angular';
+import { FundingServiceAdmin } from 'src/app/service/admin.funding.service';
+
 
 interface Funds {
   id: number;
@@ -56,14 +58,14 @@ export class TypographyComponent implements OnInit {
 
   funds: Funds[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private fundingServiceAdmin: FundingServiceAdmin) {}
 
   ngOnInit(): void {
     this.fetchData();
   }
 
   fetchData() {
-    this.httpClient.get<Funds[]>('http://localhost:8005/auth/admin/funding').subscribe(
+    this.fundingServiceAdmin.allFundingAdmin().subscribe(
       (response) => {
         console.log(response);
         this.funds = response;

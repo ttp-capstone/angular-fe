@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 import {DefaultLayoutComponentAdmin} from '../app/admin/dashboard/layout/default-layout/default-layout.component'
+import { AuthGuard } from './auth.gaurd.admin'; // Import the AuthGuard
 
 export const routes: Routes = [
   {
@@ -21,27 +22,33 @@ export const routes: Routes = [
       
       {
         path: 'admin/dashboard',
-        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes)
+        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes),
+        canActivate: [AuthGuard] // Apply the AuthGuard here
       },
       {
         path: 'applications',
-        loadChildren: () => import('./admin/dashboard/dashboard/views/applications/routes').then((m) => m.routes)
+        loadChildren: () => import('./admin/dashboard/dashboard/views/applications/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
       },
       {
         path: 'users',
         loadComponent: () => import('./admin/dashboard/dashboard/views/users/users.component').then(m => m.UsersComponent),
+        canActivate: [AuthGuard]
       },
       {
         path: 'view-application/:id',
-        loadChildren: () => import('./admin/dashboard/dashboard/views/view-application/routes').then((m) => m.routes)
+        loadChildren: () => import('./admin/dashboard/dashboard/views/view-application/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
       },
       {
         path: 'view-funding/:id',
-        loadChildren: () => import('./admin/dashboard/dashboard/views/view-funding/routes').then((m) => m.routes)
+        loadChildren: () => import('./admin/dashboard/dashboard/views/view-funding/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
       },
       {
         path: 'theme',
-        loadChildren: () => import('./admin/dashboard/dashboard/views/theme/routes').then((m) => m.routes)
+        loadChildren: () => import('./admin/dashboard/dashboard/views/theme/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
       },
       
     ]
