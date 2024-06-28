@@ -1,9 +1,7 @@
 <c-row ngPreserveWhitespaces>
     <c-col xs="12">
       <c-card class="mb-4">
-        <c-card-header>
-          <strong>Angular Form Control</strong>
-        </c-card-header>
+       
         <c-card-body>
             <div class="card" style="margin-bottom: 20px;">
                 <div class="card-header">
@@ -67,12 +65,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let funding of appliedFunding">
+                        <!--<tr *ngFor="let funding of appliedFunding">
                           <th scope="row">1</th>
                           <td>{{ funding.funding.programName }}</td>
                           <td>{{ funding.applicationDate | date:'yyyy-MM-dd'}}</td>
                           <td>{{ funding.status}}</td>
                           <td> <button mat-button color="primary" (click)="viewFunding(project.id, funding.funding)">
+                            View Details
+                          </button></td>
+                        </tr>-->
+                        <tr >
+                          <th>1</th>
+                          <td>University Of Florida Founders Grant</td>
+                          <td>15/10/2024</td>
+                          <td>NOT APPLIED</td>
+                          <td> <button mat-button color="primary">
+                            View Details
+                          </button></td>
+                        </tr>
+                        <tr >
+                          <th>2</th>
+                          <td>Greenwich Health Leaders Grant</td>
+                          <td>31/10/2024</td>
+                          <td>PENDING</td>
+                          <td> <button mat-button color="primary">
                             View Details
                           </button></td>
                         </tr>
