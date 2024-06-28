@@ -1,0 +1,25 @@
+<app-widgets-dropdown-applications></app-widgets-dropdown-applications>
+
+<c-card class="my-4">
+  <table cTable hover striped>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Project ID</th>
+        <th scope="col">Project Title</th>
+        <th scope="col">Project Status</th>
+        <th scope="col">View Project</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <th scope="row">{{ project.id }}</th>
+        <td>{{ project.id }}</td>
+        <td>{{ project.title }}</td>
+        <td>{{ project.status }}</td>
+        <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
+        <td><a [routerLink]="['/view-application', project.id]">View Application</a></td>
+      </tr>
+    </tbody>
+  </table>
+</c-card>

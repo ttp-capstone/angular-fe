@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-content>
+    <div class="image-container">
+      <img src="assets/images/logo.png" alt="Logo" class="logo">
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="form.get('name')">Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Name Of The Project</mat-label>
+        <input matInput formControlName="projectName" />
+        <mat-error *ngIf="form.get('projectName')">Email is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Organization Name</mat-label>
+        <input matInput formControlName="orgName" />
+        <mat-error *ngIf="form.get('orgName')">Phone is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Organization Type</mat-label>
+        <input matInput formControlName="orgType" />
+        <mat-error *ngIf="form.get('orgType')">Address is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" />
+        <mat-error *ngIf="form.get('country')">City is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Type Of Funding</mat-label>
+        <input matInput formControlName="fundingType" />
+        <mat-error *ngIf="form.get('fundingType')">State is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Amount Of Funding</mat-label>
+        <input matInput formControlName="fundingAmount" />
+        <mat-error *ngIf="form.get('fundingAmount')">ZIP is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Area Of Research or Industry</mat-label>
+        <input matInput formControlName="areaResearch" />
+        <mat-error *ngIf="form.get('areaResearch')">Country is required</mat-error>
+      </mat-form-field>
+<div class="button_container">
+      <button mat-raised-button class="b-button" type="submit" >Submit</button>
+    </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

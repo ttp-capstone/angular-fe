@@ -1,0 +1,26 @@
+<app-widgets-dropdown-fundings></app-widgets-dropdown-fundings>
+
+<c-card class="my-4">
+<table cTable hover striped>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Funding ID</th>
+      <th scope="col">Funding Title</th>
+      <th scope="col">Funding Status</th>
+      <th scope="col">View Funding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fund of funds">
+      <th scope="row">{{ fund.id }}</th>
+      <td>{{ fund.id }}</td>
+      <td>{{ fund.programName }}</td>
+      <td>{{ fund.status }}</td>
+      <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
+      <td><a [routerLink]="['/view-funding', fund.id]">View Funding</a></td>
+    </tr>
+  </tbody>
+</table>
+</c-card>
+

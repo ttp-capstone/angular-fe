@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import {DefaultLayoutComponentAdmin} from '../app/admin/dashboard/layout/default-layout/default-layout.component'
+import { AuthGuard } from './auth.gaurd.admin'; // Import the AuthGuard
 
 export const routes: Routes = [
   {
@@ -9,6 +11,55 @@ export const routes: Routes = [
       title: 'Home Page'
     }
   },
+
+  {
+    path: '',
+    component: DefaultLayoutComponentAdmin,
+    data: {
+      title: 'Home'
+    },
+    children: [
+      
+      {
+        path: 'admin/dashboard',
+        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes),
+        canActivate: [AuthGuard] // Apply the AuthGuard here
+      },
+      {
+        path: 'applications',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/applications/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'users',
+        loadComponent: () => import('./admin/dashboard/dashboard/views/users/users.component').then(m => m.UsersComponent),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'view-application/:id',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/view-application/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'view-funding/:id',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/view-funding/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'theme',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/theme/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'logout',
+        loadComponent: () => import('./admin/dashboard/layout/logout/logout.component').then(m => m.LogoutComponent)
+        // canActivate: [AuthGuard]
+      },
+      
+    ]
+    },
+
+
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -20,10 +71,6 @@ export const routes: Routes = [
       {
         path: 'my/dashboard',
         loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
-      },
-      {
-        path: 'admin/dashboard',
-        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes)
       },
       {
         path: 'account',
