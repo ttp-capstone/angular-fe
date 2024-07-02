@@ -21,13 +21,18 @@ import {
   TableDirective,
 } from '@coreui/angular';
 import { FundingServiceAdmin } from 'src/app/service/admin.funding.service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { filter } from 'rxjs/operators';
 
 
 interface Funds {
   id: number;
+  title: string;  // Add this line
   programName: string;
+  fundingType: string;
   status: string;
 }
+
 @Component({
     templateUrl: 'typography.component.html',
     standalone: true,
@@ -38,6 +43,7 @@ interface Funds {
         SidebarComponent,
         CardFooterComponent,
         ColComponent,
+        ReactiveFormsModule,
         FormCheckLabelDirective,
         GutterDirective,
         ProgressBarDirective,
@@ -55,13 +61,19 @@ interface Funds {
     ],
 })
 export class TypographyComponent implements OnInit {
-
   funds: Funds[] = [];
+  filteredFunds: Funds[] = [];
+  searchControl = new FormControl('');
 
   constructor(private fundingServiceAdmin: FundingServiceAdmin) {}
 
   ngOnInit(): void {
     this.fetchData();
+    this.searchControl.valueChanges
+      .pipe(filter(value => value !== null))
+      .subscribe(value => {
+        this.filterFunds(value as string);
+      });
   }
 
   fetchData() {
@@ -69,10 +81,23 @@ export class TypographyComponent implements OnInit {
       (response) => {
         console.log(response);
         this.funds = response;
+        this.filteredFunds = response; // Initialize filteredFunds with all funds
       },
       (error) => {
         console.error('Fetching data failed', error);
       }
     );
+  }
+
+  filterFunds(searchTerm: string) {
+    console.log('Filtering funds with searchTerm:', searchTerm);
+    if (!searchTerm) {
+      this.filteredFunds = this.funds;
+    } else {
+      this.filteredFunds = this.funds.filter(fund =>
+        fund.programName.toLowerCase().startsWith(searchTerm.toLowerCase())
+      );
+    }
+    console.log('Filtered funds:', this.filteredFunds);
   }
 }

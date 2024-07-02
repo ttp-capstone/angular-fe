@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -33,7 +33,7 @@ interface Funding {
 @Component({
   selector: 'app-view-funding',
   standalone: true,
-  imports: [CommonModule, FormsModule,HttpClientModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule , RouterModule,HttpClientModule],
   templateUrl: './view-funding.component.html',
   styleUrls: ['./view-funding.component.scss']
 })
@@ -57,6 +57,7 @@ export class ViewFundingComponent implements OnInit {
   };
 
   updatedStatus: string = 'Pending'; // Default value
+  updateSuccess: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -94,6 +95,10 @@ export class ViewFundingComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);
+          this.updateSuccess = true;
+          setTimeout(() => {
+            this.updateSuccess = false; // Reset update success message after 3 seconds
+          }, 3000);
           // Optionally navigate to another route or display a success message
         },
         (error) => {

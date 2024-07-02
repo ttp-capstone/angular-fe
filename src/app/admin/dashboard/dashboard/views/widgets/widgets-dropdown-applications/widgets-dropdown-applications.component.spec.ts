@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetsDropdownApplicationsComponent } from './widgets-dropdown-applications.component';
+import { WidgetsDropdownComponentApplications } from './widgets-dropdown-applications.component';
 
 describe('WidgetsDropdownApplicationsComponent', () => {
-  let component: WidgetsDropdownApplicationsComponent;
-  let fixture: ComponentFixture<WidgetsDropdownApplicationsComponent>;
+  let component: WidgetsDropdownComponentApplications;
+  let fixture: ComponentFixture<WidgetsDropdownComponentApplications>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WidgetsDropdownApplicationsComponent]
+      imports: [WidgetsDropdownComponentApplications]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(WidgetsDropdownApplicationsComponent);
+    fixture = TestBed.createComponent(WidgetsDropdownComponentApplications);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

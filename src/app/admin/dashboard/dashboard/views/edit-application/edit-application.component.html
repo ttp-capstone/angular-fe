@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h4>Edit Project: {{ editApplicationForm.get('title')?.value }}</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="editApplicationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Project Title</label>
+          <input id="title" type="text" class="form-control" formControlName="title" [value]="application.title">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3" class="form-control" formControlName="description" [value]="application.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="organizationType">Organization Type</label>
+          <select id="organizationType" class="form-control" formControlName="organizationType">
+            <option value="Research" [selected]="application.organizationType === 'Research'">Research</option>
+            <option value="Startup" [selected]="application.organizationType === 'Startup'">Startup</option>
+            <option value="Company" [selected]="application.organizationType === 'Company'">Company</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="organizationName">Organization Name</label>
+          <input id="organizationName" type="text" class="form-control" formControlName="organizationName" [value]="application.organizationName">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input id="country" type="text" class="form-control" formControlName="country" [value]="application.country">
+        </div>
+        <div class="form-group">
+          <label for="fundingType">Funding Type</label>
+          <select id="fundingType" class="form-control" formControlName="fundingType">
+            <option value="Grant" [selected]="application.fundingType === 'Grant'">Grant</option>
+            <option value="Loan" [selected]="application.fundingType === 'Loan'">Loan</option>
+            <option value="Investment" [selected]="application.fundingType === 'Investment'">Investment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" class="form-control" formControlName="status">
+            <option value="Pending" [selected]="application.status === 'Pending'">Pending</option>
+            <option value="Approved" [selected]="application.status === 'Approved'">Approved</option>
+            <option value="Rejected" [selected]="application.status === 'Rejected'">Rejected</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Update Application</button> <br>
+        <button type="button" class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+        <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+          Application updated successfully!
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

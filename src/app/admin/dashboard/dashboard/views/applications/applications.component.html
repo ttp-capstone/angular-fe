@@ -1,5 +1,9 @@
 <app-widgets-dropdown-applications></app-widgets-dropdown-applications>
 
+<div class="my-4">
+  <input [formControl]="searchControl" placeholder="Search by Project Title" class="form-control mb-3">
+</div>
+
 <c-card class="my-4">
   <table cTable hover striped>
     <thead>
@@ -12,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let project of projects">
+      <tr *ngFor="let project of filteredProjects">
         <th scope="row">{{ project.id }}</th>
         <td>{{ project.id }}</td>
         <td>{{ project.title }}</td>

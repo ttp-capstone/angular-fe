@@ -8,6 +8,6 @@ export class AuthService {
   constructor() {}
 
   getToken(): string | null {
-    return localStorage.getItem('authToken'); // Example: Fetch token from local storage
+    return localStorage.getItem('jwt'); // Example: Fetch token from local storage
   }
 }

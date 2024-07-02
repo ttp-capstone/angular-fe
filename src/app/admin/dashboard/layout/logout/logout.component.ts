@@ -32,4 +32,5 @@ export class LogoutComponent implements OnInit {
     // Redirect to login page
     this.router.navigate(['/admin/login']);
   } 
+
 }

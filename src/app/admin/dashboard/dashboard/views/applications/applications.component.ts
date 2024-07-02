@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, DOCUMENT, NgStyle } from '@angular/common';
-import { DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
+import { DestroyRef, effect, inject,  Renderer2, signal, WritableSignal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { ApplicationService } from './applications.service';
@@ -27,6 +27,7 @@ import {
   TextColorDirective
 } from '@coreui/angular';
 import { IconDirective } from '@coreui/icons-angular';
+import { filter } from 'rxjs/operators';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
@@ -47,6 +48,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export class ApplicationsComponent implements OnInit {
   projects: any[] = [];
+  filteredProjects: any[] = [];
+  searchControl = new FormControl('');
 
   constructor(
     private service: ProjectServiceAdmin,
@@ -55,17 +58,48 @@ export class ApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAllProjects();
+    this.searchControl.valueChanges
+      .pipe(filter(value => value !== null))
+      .subscribe(value => {
+        this.filterProjects(value as string);
+      });
   }
 
   fetchAllProjects() {
     this.service.allProjectAdmin().subscribe(
       (projects) => {
-        this.projects = projects; // Assuming projects is an array of project objects
+        this.projects = projects;
+        this.filteredProjects = projects; // Initialize filteredProjects with all projects
       },
       (error) => {
         console.error('Could not fetch projects', error);
-        // Handle error appropriately, e.g., show error message to user
       }
     );
+  }
+
+  filterProjects(searchTerm: string) {
+    if (!searchTerm) {
+      this.filteredProjects = this.projects;
+    } else {
+      this.filteredProjects = this.projects.filter(project =>
+        project.title.toLowerCase().startsWith(searchTerm.toLowerCase())
+      );
+    }
+  }
+
+  updateStatus(projectId: number, newStatus: string) {
+    const updatedProject = this.projects.find(project => project.id === projectId);
+    if (updatedProject) {
+      updatedProject.status = newStatus;
+      this.service.updateProjectStatus(projectId, updatedProject).subscribe(
+        (response) => {
+          console.log('Status updated successfully', response);
+          this.fetchAllProjects();  // Refresh the projects list
+        },
+        (error) => {
+          console.error('Failed to update status', error);
+        }
+      );
+    }
   }
 }
