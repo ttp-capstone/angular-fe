@@ -22,7 +22,11 @@ import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, Tex
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  isNavHidden: boolean = true;
 
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
+  }
   constructor(
     private service: JwtService,
     private fb: FormBuilder,
