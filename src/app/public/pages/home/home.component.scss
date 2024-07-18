@@ -1,62 +1,3 @@
-
-.nav-footer {
-  color: #ffffff;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.toggle-btn {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  z-index: 2;
-}
-
-/* Side Navigation */
-.side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #1b3325;
-  padding-top: 40px;
-  z-index: 1;
-  transition: transform 0.3s ease;
-}
-
-.side-nav.hidden {
-  transform: translateX(-100%);
-}
-
-.side-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.side-nav ul li {
-  margin: 20px 0;
-}
-
-.side-nav ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.2rem;
-  display: block;
-  padding: 10px 20px;
-  transition: background-color 0.3s;
-}
-
-.side-nav ul li a:hover {
-  background-color: #000000;
-}
-
 .video-container {
   position: fixed;
   top: 0;
@@ -92,40 +33,40 @@
     text-align: center;
     font-family: 'Arial, sans-serif';
     color: #333;
-
+  
     .header-photo {
       width: 500px; /* Adjust width as needed */
       height: 200px; /* Adjust height as needed by parth */
       margin: 0 auto 90px; /* parth says Center horizontally and add bottom margin, rn its 90 */
-      display: block;
+      display: block; 
     }
-
+  
     h1 {
       font-size: 3rem;
       margin-bottom: 20px;
       color: #ffffff;
     }
-
+  
     .brand-message {
       font-size: 1.2rem;
       line-height: 1.6;
       margin-bottom: 30px;
     }
-
+  
     .start-journey {
       font-size: 1.3rem;
       font-weight: bold;
       color: #1b3325;
       margin-bottom: 20px;
     }
-
+  
     .features {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
       margin-bottom: 30px;
-
+  
       .feature {
         max-width: 200px;
         text-align: center;
@@ -133,25 +74,25 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         background-color: #f9f9f9;
-
+  
         h2 {
           font-size: 1.8rem;
           margin-bottom: 10px;
           color: #9cccb0;
         }
-
+  
         p {
           font-size: 1.1rem;
           color: #333;
         }
       }
     }
-
+  
     .action-buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
-
+  
       .btn-login,
       .btn-register {
         padding: 10px 20px;
@@ -162,46 +103,11 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-
+  
         &:hover {
           background-color: #000000;
         }
       }
     }
   }
-
-
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1b3325;
-    color: #ffffff;
-    padding: 20px;
-    // position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
-  }
-  .footer-left .separator {
-    border-left: 1px solid #ffffff;
-    height: 29px; /* Adjust height as needed */
-    margin: 0 20px;
-  }
-
-  .footer-left a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 1.2rem; /* Adjust size as needed */
-    transition: color 0.3s;
-  }
-
-  .footer-left a:hover {
-    color: #9cccb0;
-  }
-
-  .footer-right p {
-    margin: 0;
-    font-size: 1rem;
-  }
+  

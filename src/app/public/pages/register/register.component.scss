@@ -129,39 +129,3 @@ label {
       font-size: 15px;
   }
 }
-
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1b3325;
-  color: #ffffff;
-  padding: 20px;
-  // position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
-}
-.footer-left .separator {
-  border-left: 1px solid #ffffff;
-  height: 29px; /* Adjust height as needed */
-  margin: 0 20px;
-}
-
-.footer-left a {
-  color: #ffffff;
-  text-decoration: none;
-  margin-right: 15px;
-  font-size: 1.2rem; /* Adjust size as needed */
-  transition: color 0.3s;
-}
-
-.footer-left a:hover {
-  color: #9cccb0;
-}
-
-.footer-right p {
-  margin: 0;
-  font-size: 1rem;
-}
