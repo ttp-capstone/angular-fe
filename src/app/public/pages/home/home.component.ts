@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.hello();
   }
+  isNavHidden: boolean = true;
 
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
+  }
   hello() {
     this.service.hello().subscribe(
       (response) => {

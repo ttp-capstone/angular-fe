@@ -7,37 +7,37 @@
             <form cForm [formGroup]="registerForm" (ngSubmit)="submitForm()">
               <h1>Register</h1>
               <p class="text-body-secondary">Create your account</p>
-              
+
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
                 <input autoComplete="fullName" cFormControl placeholder="Full Name" formControlName="fullName" />
               </c-input-group>
-              
+
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
                 <input autoComplete="email" cFormControl placeholder="Email" formControlName="email" />
               </c-input-group>
-              
+
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
                 <input autoComplete="new-password" cFormControl placeholder="Password" type="password" formControlName="password" />
               </c-input-group>
-              
+
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
                 <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" formControlName="repeatPassword" />
               </c-input-group>
-              
+
               <div class="d-grid">
                 <button cButton color="success" type="submit" [disabled]="registerForm.invalid">Create Account</button>
               </div>
-              
+
             </form>
           </c-card-body>
         </c-card>
@@ -54,12 +54,12 @@
               <label for="name">Name</label>
               <input type="text" class="form-control" id="fullName" formControlName="fullName" />
           </div>
-  
+
           <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" id="email" formControlName="email" />
           </div>
-  
+
           <div class="form-group">
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" formControlName="password" />
@@ -74,5 +74,22 @@
           Already a member? <a routerLink="/login"> login</a>
       </div>
   </div>
-  
+
   </div>
+
+
+<footer class="footer">
+  <div class="footer-left">
+    <a class="separator"></a>
+    <a href="https://twitter.com" target="_blank">   <i class="fab fa-twitter"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:info@ttp.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a class="separator"></a>
+  </div>
+  <div class="footer-right">
+    <p>59 Hayden Street, Toronto, Ontario, M4Y 2P2</p>
+  </div>
+</footer>
