@@ -14,6 +14,7 @@
       <th scope="col">Funding Type</th>
       <th scope="col">Funding Status</th>
       <th scope="col">View Funding</th>
+      <th scope="col"> </th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,7 @@
       <td>{{ fund.status }}</td>
       <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
       <td><a [routerLink]="['/view-funding', fund.id]">View Funding</a></td>
+      <td><button (click)="deleteFund(fund.id)" class="btn btn-danger"><i class="cil-trash"></i></button></td>
     </tr>
   </tbody>
 </table>

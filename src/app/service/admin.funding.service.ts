@@ -83,6 +83,10 @@ export class FundingServiceAdmin {
     return of(null);
   }
 
+  deleteFundingAdmin(fundingId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/admin/funding/${fundingId}`);
+  }
+
   allFundingAdmin(): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {

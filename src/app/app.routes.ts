@@ -46,6 +46,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'create-application',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/create-application/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'edit-application/:id',
         loadChildren: () => import('./admin/dashboard/dashboard/views/edit-application/routes').then((m) => m.routes),
         canActivate: [AuthGuard]

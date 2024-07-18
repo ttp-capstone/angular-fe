@@ -26,6 +26,34 @@ export class ProjectServiceAdmin {
 
   createProjectadmin(projectData: any): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
+    
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      const username = decoded.sub;
+      if (username) {
+        const headers = new HttpHeaders({
+          'Authorization': "Bearer " + jwtToken,
+          'Username': username
+        });
+      return this.http.post<any>(`${this.apiUrl}/admin/projects`, projectData, {headers: headers });
+
+      } else {
+        console.error('Username not found in JWT payload');
+        return of(null);
+      }
+    }
+    return of(null);
+    
+  }
+
+  
+
+  //   deleteProject(projectId: number): Observable<any> {
+  //   return this.http.delete<any>(`${this.apiUrl}/admin/projects/${projectId}`);
+  // }
+
+  deleteProject(projectId: number): Observable<any> {
+    const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {
       const decoded: any = jwtDecode(jwtToken);
       console.log("Decoded", decoded);
@@ -33,10 +61,14 @@ export class ProjectServiceAdmin {
       this.router.navigate(['/admin/login']); // Redirect to login page if JWT is not found
       return of(null);
     }
-    return this.http.post<any>(`${this.apiUrl}/my/projects`, projectData, {
-      headers: this.createAuthorizationHeader()
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${jwtToken}`
     });
+
+    return this.http.delete<any>(`${this.apiUrl}/admin/projects/${projectId}`, { headers });
   }
+
 
   getProjectadmin(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`, {

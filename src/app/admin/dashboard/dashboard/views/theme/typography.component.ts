@@ -100,4 +100,18 @@ export class TypographyComponent implements OnInit {
     }
     console.log('Filtered funds:', this.filteredFunds);
   }
+
+  deleteFund(fundingId: number) {
+    if (confirm('Are you sure you want to delete this project?')) {
+      this.fundingServiceAdmin.deleteFundingAdmin(fundingId).subscribe(
+        (response: any) => {
+          console.log('Project deleted successfully', response);
+          this.fetchData();  // Refresh the projects list
+        },
+        (error: any) => {
+          console.error('Failed to delete project', error);
+        }
+      );
+    }
+  }
 }

@@ -102,4 +102,22 @@ export class ApplicationsComponent implements OnInit {
       );
     }
   }
+
+  deleteProject(projectId: number) {
+    if (confirm('Are you sure you want to delete this project?')) {
+      this.service.deleteProject(projectId).subscribe(
+        (response) => {
+          console.log('Project deleted successfully', response);
+          this.fetchAllProjects();  // Refresh the projects list
+        },
+        (error) => {
+          console.error('Failed to delete project', error);
+        }
+      );
+    }
+  }
+
+  onCreate() {
+    this.router.navigate(['/create-application']);
+  }
 }
