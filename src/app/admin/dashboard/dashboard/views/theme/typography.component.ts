@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent } from '@coreui/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { IconDirective } from '@coreui/icons-angular';
+import { IconDirective, IconModule } from '@coreui/icons-angular';
+import { cilTrash } from '@coreui/icons';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { CommonModule, DOCUMENT, NgStyle } from '@angular/common';
 import { NgFor } from '@angular/common';
@@ -39,6 +40,7 @@ interface Funds {
     imports: [
         TextColorDirective,  AvatarComponent,
         ButtonDirective,
+        IconModule,
         ButtonGroupComponent,
         SidebarComponent,
         CardFooterComponent,
@@ -65,7 +67,10 @@ export class TypographyComponent implements OnInit {
   filteredFunds: Funds[] = [];
   searchControl = new FormControl('');
 
-  constructor(private fundingServiceAdmin: FundingServiceAdmin) {}
+  constructor(
+    private fundingServiceAdmin: FundingServiceAdmin,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -113,5 +118,9 @@ export class TypographyComponent implements OnInit {
         }
       );
     }
+  }
+
+  onCreate() {
+    this.router.navigate(['/create-funding']);
   }
 }

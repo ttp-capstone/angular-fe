@@ -78,6 +78,6 @@ export class CreateApplicationComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']); // Navigate to home or list view
+    this.router.navigate(['applications']); // Navigate to home or list view
   }
 }

@@ -15,6 +15,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponentAdmin,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -50,6 +51,11 @@ export const routes: Routes = [
         loadChildren: () => import('./admin/dashboard/dashboard/views/create-application/routes').then((m) => m.routes),
         canActivate: [AuthGuard]
       },
+      {
+        path: 'create-funding',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/create-funding/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },      
       {
         path: 'edit-application/:id',
         loadChildren: () => import('./admin/dashboard/dashboard/views/edit-application/routes').then((m) => m.routes),

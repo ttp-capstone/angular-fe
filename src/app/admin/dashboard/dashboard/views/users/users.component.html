@@ -7,7 +7,6 @@
             <th scope="col">User ID</th>
             <th scope="col">Email</th>
             <th scope="col">Full Name</th>
-            <th scope="col">View User</th>
           </tr>
         </thead>
         <tbody>
@@ -16,8 +15,6 @@
             <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.fullName }}</td>
-            <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
-            <td><a [routerLink]="['/view-user', user.id]">View User</a></td>
           </tr>
         </tbody>
       </table>

@@ -59,7 +59,8 @@ export class ViewApplicationComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +104,10 @@ export class ViewApplicationComponent implements OnInit {
           // Handle error, display error message, etc.
         }
       );
+  }
+
+  goBack() {
+    this.router.navigate(['applications']);
   }
 }
 
