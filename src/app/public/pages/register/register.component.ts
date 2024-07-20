@@ -15,7 +15,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
+  isNavHidden: boolean = true;
 
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
+  }
   constructor(
     private service: JwtService,
     private fb: FormBuilder,
@@ -37,7 +41,7 @@ export class RegisterComponent implements OnInit {
     }
 
     console.log(this.registerForm.value);
-    
+
     // Assuming JwtService.register returns an Observable
     this.service.register(this.registerForm.value).subscribe(
       (response) => {

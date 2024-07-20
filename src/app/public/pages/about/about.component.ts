@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  isNavHidden: boolean = true;
 
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
+  }
   aboutInfo: string = '';
 
   constructor() { }
