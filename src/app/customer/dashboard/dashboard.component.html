@@ -4,39 +4,25 @@
     <table cTable hover striped>
       <thead>
       <tr>
-        <th scope="col"></th>
         <th scope="col">Project Name</th>
-        <th scope="col">Application Status</th>
-        <th scope="col">Total Funding Available</th>
-        <th scope="col">View Application</th>
+        <th scope="col">Organization Name</th>
+        <th scope="col">Country</th>
+        <th scope="col">Funding Type</th>
+        <th scope="col">Status</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Approved</td>
-        <td>&#36;10000</td>
-        <td><a href="">View Application</a></td>
-
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Pending</td>
-        <td>&#36;2000</td>
-        <td><a href="">View Application</a></td>
-
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td >Larry the Bird</td>
-        <td>Pending </td>
-        <td>&#36;5000</td>
-        <td><a href="">View Application</a></td>
-      </tr>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.title }}</td>
+          <td>{{ project.organizationName }}</td>
+          <td>{{ project.country }}</td>
+          <td>{{ project.fundingType }}</td>
+          <td>{{ project.status }}</td>
+          
+        </tr>
+     
       </tbody>
-    </table>
+      </table>
    
   </c-card-body>
    <!-- <c-card-footer> -->
