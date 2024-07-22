@@ -35,6 +35,7 @@ export class FundingService {
           'Authorization': "Bearer " + jwtToken,
           'Username': username
         });
+        //console.log(this.http.get<any>(`${this.apiUrl}funding/matched/${id}`, {headers: headers }));
       return this.http.get<any>(`${this.apiUrl}funding/matched/${id}`, {headers: headers });
 
       } else {
