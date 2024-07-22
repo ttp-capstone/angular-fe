@@ -87,4 +87,24 @@ export class FundingService {
     return of(null);
   }
 
+  fetchAllAppliedFunding(): Observable<any> {
+    const jwtToken = localStorage.getItem('jwt');
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      const username = decoded.sub;
+      if (username) {
+        const headers = new HttpHeaders({
+          'Authorization': "Bearer " + jwtToken,
+          'Username': username
+        });
+        return this.http.get<any>(`${this.apiUrl}all/applied_funding`, {headers: headers});
+
+      } else {
+        console.error('Username not found in JWT payload');
+        return of(null);
+      }
+    }
+    return of(null);
+  }
+
  }

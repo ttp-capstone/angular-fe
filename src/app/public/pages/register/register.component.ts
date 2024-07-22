@@ -4,18 +4,22 @@ import { ContainerComponent, RowComponent, ColComponent, TextColorDirective, Car
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JwtService } from 'src/app/service/jwt.service';
 import {ReactiveFormsModule} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
     standalone: true,
-    imports: [ReactiveFormsModule, ContainerComponent, RowComponent, ColComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
+    imports: [ReactiveFormsModule, ContainerComponent,RouterModule, RowComponent, ColComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective]
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
+  isNavHidden: boolean = true;
 
+  toggleNav() {
+    this.isNavHidden = !this.isNavHidden;
+  }
   constructor(
     private service: JwtService,
     private fb: FormBuilder,
@@ -37,7 +41,7 @@ export class RegisterComponent implements OnInit {
     }
 
     console.log(this.registerForm.value);
-    
+
     // Assuming JwtService.register returns an Observable
     this.service.register(this.registerForm.value).subscribe(
       (response) => {

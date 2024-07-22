@@ -31,7 +31,7 @@ import { AuthService } from './users.service';
 interface User {
   id: number;
   email: string;
-  role: string;
+  fullName: string;
 }
 
 @Component({
@@ -43,28 +43,21 @@ interface User {
 })
 
 export class UsersComponent implements OnInit {
-
   users: User[] = [];
-  token: string | null = null; // Ensure token is initialized as null
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.token = this.authService.getToken(); // Retrieve token on component initialization
-
-    if (this.token) {
-      this.fetchData(); // Fetch data only if token is available
-    } else {
-      console.error('Authentication token not found'); // Log error if token is not found
-    }
+    this.fetchData();
   }
 
   fetchData(): void {
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}` // Use this.token directly
+      'Authorization': `Bearer ${token}`
     });
 
-    this.httpClient.get<User[]>('http://localhost:8005/users', { headers }).subscribe(
+    this.httpClient.get<User[]>('http://localhost:8005/users/me/users', { headers }).subscribe(
       (response) => {
         console.log(response);
         this.users = response;

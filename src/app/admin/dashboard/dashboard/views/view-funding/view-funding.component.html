@@ -3,7 +3,7 @@
   
   <div class="card">
     <div class="card-header">
-      <h2>Program Name: {{ funding.programName }}</h2>
+      <h2>Program Name: {{ funding.programName }} <a [routerLink]="['/edit-funding', funding.id]" class="btn btn-sm btn-outline-primary float-end">Edit</a> </h2>
     </div>
     <div class="card-body">
       <p><strong>Funding ID:</strong> {{ funding.id }}</p>
@@ -34,7 +34,12 @@
             <option>Rejected</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+        <button type="submit" class="btn btn-primary mt-2">Update Status</button><br>
+        <button type="button" class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+       
+        <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+          Status updated successfully!
+        </div>
       </form>
     </div>
   </div>

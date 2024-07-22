@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h4>Create New Application</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="createApplicationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Project Title</label>
+            <input id="title" type="text" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="3" class="form-control" formControlName="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="organizationType">Organization Type</label>
+            <select id="organizationType" class="form-control" formControlName="organizationType">
+              <option value="Research">Research</option>
+              <option value="Startup">Startup</option>
+              <option value="Company">Company</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="organizationName">Organization Name</label>
+            <input id="organizationName" type="text" class="form-control" formControlName="organizationName">
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input id="country" type="text" class="form-control" formControlName="country">
+          </div>
+          <div class="form-group">
+            <label for="fundingType">Funding Type</label>
+            <select id="fundingType" class="form-control" formControlName="fundingType">
+              <option value="Grant">Grant</option>
+              <option value="Loan">Loan</option>
+              <option value="Investment">Investment</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" class="form-control" formControlName="status">
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-primary mt-2">Create Application</button><br>
+          <button type="button" class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

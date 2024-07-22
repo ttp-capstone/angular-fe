@@ -28,13 +28,13 @@ export const routes: Routes = [
           title: 'project'
         }
       },
-      // {
-      //   path: 'apply:id',
-      //   loadComponent: () => import('./view-project/view-project.component').then(m => m.ViewProjectComponent),
-      //   data: {
-      //     title: 'project'
-      //   }
-      // }
+      {
+        path: 'applied',
+        loadComponent: () => import('./applied-funding/applied-funding.component').then(m => m.AppliedFundingComponent),
+        data: {
+          title: 'project'
+        }
+      }
     ]
   }
 ];

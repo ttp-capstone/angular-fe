@@ -43,6 +43,29 @@ export class FundingServiceAdmin {
     return of(null);
   }
 
+
+  createFundingadmin(fundingData: any): Observable<any> {
+    const jwtToken = localStorage.getItem('jwt');
+    
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      const username = decoded.sub;
+      if (username) {
+        const headers = new HttpHeaders({
+          'Authorization': "Bearer " + jwtToken,
+          'Username': username
+        });
+      return this.http.post<any>(`${this.apiUrl}/admin/projects`, fundingData, {headers: headers });
+
+      } else {
+        console.error('Username not found in JWT payload');
+        return of(null);
+      }
+    }
+    return of(null);
+    
+  }
+  
   getFundingadmin(fundingId: string, projectId: string): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {
@@ -81,6 +104,10 @@ export class FundingServiceAdmin {
     }
     this.router.navigate(['/admin/login']); // Redirect to login if JWT not found
     return of(null);
+  }
+
+  deleteFundingAdmin(fundingId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/admin/funding/${fundingId}`);
   }
 
   allFundingAdmin(): Observable<any> {

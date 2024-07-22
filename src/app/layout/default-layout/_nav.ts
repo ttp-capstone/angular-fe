@@ -19,6 +19,11 @@ export const navItems: INavData[] = [
     url: 'my/projects',
     iconComponent: { name: 'cil-Tags' }
   },
+  {
+    name: 'Applied funding',
+    url: 'my/funding/applied',
+    iconComponent: { name: 'cil-Tags' }
+  },
   // {
   //   name: 'Funds',
   //   url: '/lok',

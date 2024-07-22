@@ -22,6 +22,7 @@ import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, Tex
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(
     private service: JwtService,
@@ -38,11 +39,11 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     if (this.loginForm.valid) {
+      this.errorMessage = null; // Reset the error message
       this.service.login(this.loginForm.value).subscribe(
         (response) => {
           console.log(response);
           if (response.token != null) {
-            // alert("Hello, Your token is " + response.token);
             const jwtToken = response.token;
             localStorage.setItem('jwt', jwtToken);
             this.router.navigateByUrl('admin/dashboard');
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.error('Login failed', error);
+          this.errorMessage = 'Incorrect username or password';
         }
       );
     }

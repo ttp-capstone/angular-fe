@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h4>Edit Funding: {{ editFundingForm.get('programName')?.value }}</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="editFundingForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="programName">Program Name</label>
+          <input id="programName" type="text" class="form-control" formControlName="programName" [value]="funding.programName">
+        </div>
+        <div class="form-group">
+          <label for="fundingMinistry">Funding Ministry</label>
+          <input id="fundingMinistry" type="text" class="form-control" formControlName="fundingMinistry" [value]="funding.fundingMinistry">
+        </div>
+        <div class="form-group">
+          <label for="fundingType">Funding Type</label>
+          <select id="fundingType" class="form-control" formControlName="fundingType">
+            <option value="Grant" [selected]="funding.fundingType === 'Grant'">Grant</option>
+            <option value="Loan" [selected]="funding.fundingType === 'Loan'">Loan</option>
+            <option value="Subsidy" [selected]="funding.fundingType === 'Subsidy'">Subsidy</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fundingAmount">Funding Amount</label>
+          <input id="fundingAmount" type="number" class="form-control" formControlName="fundingAmount" [value]="funding.fundingAmount">
+        </div>
+        <!-- <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <input id="deadline" type="date" class="form-control" formControlName="deadline" [value]="funding.deadline">
+        </div> -->
+        <div class="form-group">
+          <label for="overview">Overview</label>
+          <textarea id="overview" rows="3" class="form-control" formControlName="overview">{{ funding.overview }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="details">Details</label>
+          <textarea id="details" rows="3" class="form-control" formControlName="details">{{ funding.details }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="qualifications">Qualifications</label>
+          <textarea id="qualifications" rows="3" class="form-control" formControlName="qualifications">{{ funding.qualifications }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" class="form-control" formControlName="status">
+            <option value="Pending" [selected]="funding.status === 'Pending'">Pending</option>
+            <option value="Approved" [selected]="funding.status === 'Approved'">Approved</option>
+            <option value="Rejected" [selected]="funding.status === 'Rejected'">Rejected</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Update Funding</button><br>
+        <button type="button" class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+        <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+          Funding updated successfully!
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

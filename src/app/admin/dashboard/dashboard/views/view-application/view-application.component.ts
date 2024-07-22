@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -9,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
 import { ProjectServiceAdmin } from 'src/app/service/admin.project.service';
 
@@ -32,7 +32,7 @@ interface Application {
 @Component({
   selector: 'app-view-application',
   standalone: true,
-  imports: [CommonModule, FormsModule,HttpClientModule],
+  imports: [CommonModule, FormsModule,HttpClientModule, RouterModule,ReactiveFormsModule],
   templateUrl: './view-application.component.html',
   styleUrls: ['./view-application.component.scss']
 })
@@ -54,10 +54,13 @@ export class ViewApplicationComponent implements OnInit {
   };
 
   updatedStatus: string = '';
+  updateSuccess: boolean = false;
+
 
   constructor(
     private route: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -74,7 +77,7 @@ export class ViewApplicationComponent implements OnInit {
         (response) => {
           console.log(response);
           this.application = response;
-          this.updatedStatus = this.application.status; // Set initial value for updatedStatus
+          this.updatedStatus = this.application.status; 
         },
         (error) => {
           console.error('Failed to fetch application details', error);
@@ -91,13 +94,20 @@ export class ViewApplicationComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);
-          // Optionally navigate to another route or display a success message
+          this.updateSuccess = true;
+          setTimeout(() => {
+            this.updateSuccess = false; // Reset update success message after 3 seconds
+          }, 3000);
         },
         (error) => {
           console.error('Failed to update status', error);
           // Handle error, display error message, etc.
         }
       );
+  }
+
+  goBack() {
+    this.router.navigate(['applications']);
   }
 }
 
@@ -109,6 +119,7 @@ export class ViewApplicationComponent implements OnInit {
     BrowserModule,
     RouterModule.forRoot([]),
     FormsModule,
+    ReactiveFormsModule,
     ViewApplicationComponent // Add this line if you are not using standalone components
   ],
   providers: [],

@@ -1,26 +1,57 @@
 <app-widgets-dropdown-fundings></app-widgets-dropdown-fundings>
 
+<div class="my-4">
+  <div class="my-4 d-flex align-items-center">
+  <input [formControl]="searchControl" placeholder="Search by Program Name" class="form-control me-2">
+  <button class="btn btn-primary" (click)="onCreate()">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+
 <c-card class="my-4">
 <table cTable hover striped>
   <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col">Funding ID</th>
-      <th scope="col">Funding Title</th>
+      <th scope="col">Program Name</th>
+      <th scope="col">Funding Type</th>
       <th scope="col">Funding Status</th>
       <th scope="col">View Funding</th>
+      <th scope="col"> </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let fund of funds">
+    <tr *ngFor="let fund of filteredFunds">
       <th scope="row">{{ fund.id }}</th>
       <td>{{ fund.id }}</td>
       <td>{{ fund.programName }}</td>
+      <td>{{ fund.fundingType }}</td>
       <td>{{ fund.status }}</td>
       <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
       <td><a [routerLink]="['/view-funding', fund.id]">View Funding</a></td>
+      <td>
+        <button (click)="deleteFund(fund.id)" class="custom-delete-btn">
+          <span class="custom-delete-icon">&times;</span>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
 </c-card>
+
+<style>
+  .custom-delete-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .custom-delete-icon {
+    color: red; /* Change to desired color */
+    font-weight: bold;
+  }
+</style>
 

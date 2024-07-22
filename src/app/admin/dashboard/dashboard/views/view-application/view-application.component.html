@@ -1,14 +1,15 @@
 <div class="container">
-  <h2 class="my-4">Project Details</h2>
+  <!-- <h2 class="my-4">Project Details</h2> -->
   
-  <div class="card">
+  <div class="card mt-2">
     <div class="card-header">
-      <h2>Project Title: {{ application.title }}</h2>
-    </div>
+      <h4>Project Title: {{ application.title }}       <a [routerLink]="['/edit-application', application.id]" class="btn btn-sm btn-outline-primary float-end">Edit</a> </h4>
+   </div>
     <div class="card-body">
       <p><strong>Project ID:</strong> {{ application.id }}</p>
       <p><strong>Description:</strong> {{ application.description }}</p>
       <p><strong>Organization:</strong> {{ application.organizationName }}</p>
+      <p><strong>Organization Type:</strong> {{ application.organizationType }}</p>
       <p><strong>Country:</strong> {{ application.country }}</p>
       <p><strong>Funding Type:</strong> {{ application.fundingType }}</p>
       <p><strong>Status:</strong> {{ application.status }}</p>
@@ -16,11 +17,11 @@
     </div>
   </div>
 
-  <div class="card mt-4">
+  <div class="card mt-2">
     <div class="card-header">
-      <h3>Update Project Status</h3>
+      <h5>Update Project Status</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body mt-1 ">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="status">Status</label>
@@ -30,7 +31,14 @@
             <option>Rejected</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Update Status</button>
+        
+        <button type="submit" class="btn btn-primary mt-2">Update Status</button><br>
+        <button type="button" class="btn btn-primary mt-1" (click)="goBack()">Back</button>
+
+
+        <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+          Status updated successfully!
+        </div>
       </form>
     </div>
   </div>

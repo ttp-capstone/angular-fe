@@ -1,5 +1,14 @@
 <app-widgets-dropdown-applications></app-widgets-dropdown-applications>
 
+<div class="my-4">
+  <div class="my-4 d-flex align-items-center">
+    <input [formControl]="searchControl" placeholder="Search by Project Title" class="form-control me-2">
+    <button class="btn btn-primary" (click)="onCreate()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  
+
 <c-card class="my-4">
   <table cTable hover striped>
     <thead>
@@ -9,16 +18,22 @@
         <th scope="col">Project Title</th>
         <th scope="col">Project Status</th>
         <th scope="col">View Project</th>
+        <th scope="col"> </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let project of projects">
+      <tr *ngFor="let project of filteredProjects">
         <th scope="row">{{ project.id }}</th>
         <td>{{ project.id }}</td>
         <td>{{ project.title }}</td>
         <td>{{ project.status }}</td>
         <!-- <td><a [routerLink]="['/view-application']">View Application</a></td> -->
-        <td><a [routerLink]="['/view-application', project.id]">View Application</a></td>
+        <td><a [routerLink]="['/view-application', project.id]">View Project</a></td>
+        <td>
+          <button (click)="deleteProject(project.id)" class="custom-delete-btn">
+            <span class="custom-delete-icon">&times;</span>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

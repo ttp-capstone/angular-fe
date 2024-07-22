@@ -15,6 +15,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponentAdmin,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -30,6 +31,11 @@ export const routes: Routes = [
         loadChildren: () => import('./admin/dashboard/dashboard/views/applications/routes').then((m) => m.routes),
         canActivate: [AuthGuard]
       },
+      // {
+      //   path: 'update-project/:id',
+      //   loadChildren: () => import('./admin/dashboard/dashboard/views/update-project/routes').then((m) => m.routes),
+      //   canActivate: [AuthGuard]
+      // },
       {
         path: 'users',
         loadComponent: () => import('./admin/dashboard/dashboard/views/users/users.component').then(m => m.UsersComponent),
@@ -41,8 +47,28 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'create-application',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/create-application/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'create-funding',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/create-funding/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },      
+      {
+        path: 'edit-application/:id',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/edit-application/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'view-funding/:id',
         loadChildren: () => import('./admin/dashboard/dashboard/views/view-funding/routes').then((m) => m.routes),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'edit-funding/:id',
+        loadChildren: () => import('./admin/dashboard/dashboard/views/edit-funding/routes').then((m) => m.routes),
         canActivate: [AuthGuard]
       },
       {
