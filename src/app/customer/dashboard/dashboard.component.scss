@@ -5,3 +5,110 @@
     }
   }
 }
+
+.widget-card-1 {
+  margin-top: 40px;
+  text-align: right;
+  .card1-icon {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -15px;
+    font-size: 35px;
+    border-radius: 8px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+  }
+  .card-block > span {
+    color: #919aa3;
+  }
+  h4 {
+    font-weight: 400;
+    margin-top: 10px;
+  }
+  &:hover .card1-icon {
+    top: -25px;
+  }
+}
+
+.bg-c-blue {
+  background-color: #0c3faf;
+}
+ .bg-c-light-blue {
+  background-color: #cae0ff;
+ }
+.text-c-blue {
+  color: #0c3faf;
+}
+
+.bg-c-pink {
+  background-color: #d94160;
+}
+.bg-c-light-pink {
+  background-color: #f2ccd4;
+}
+
+.text-c-pink {
+  color: #d94160;
+}
+
+.bg-c-green {
+  background-color: #5b9307;
+}
+.bg-c-light-green {
+  background-color: #f2ffdf;
+}
+.text-c-green {
+  color: #5b9307;
+}
+
+.bg-c-yellow {
+  background-color: #de8300;
+}
+.bg-c-light-yellow {
+  background-color: #ffedd4;
+}
+.text-c-yellow {
+  color: #de8300;
+}
+
+.card .card-block-small {
+  padding: 15px 20px;
+}
+.f-w-600 {
+  font-weight: 600;
+}
+.f-16 {
+  font-size: 16px;
+}
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.icofont {
+  font-family: IcoFont !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.text-white {
+  color: white;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+  margin-top: 16px; /* Adds space above the button */
+}

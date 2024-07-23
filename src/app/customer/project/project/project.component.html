@@ -1,21 +1,24 @@
 <c-row ngPreserveWhitespaces>
   <c-col xs="12">
     <c-card class="mb-4">
-      
+      <c-card-header>
+        <strong>All Projects</strong> 
+      </c-card-header> 
       <c-card-body>
         
         <button [active]="true" cButton color="primary" routerLink="/my/projects/create">New Application</button>
+        <hr>
            
           <table cTable>
             <thead>
             <tr>
-              <th scope="col">TITLE</th>
-              <th scope="col">ORG TYPE</th>
-              <th scope="col">ORG NAME</th>
-              <th scope="col">COUNTRY</th>
-              <th scope="col">TYPE OF FUNDING</th>
-              <th scope="col">Status</th>
-              <th scope="col">VIEW</th>
+              <th scope="col" class="bg-black text-white">TITLE</th>
+              <th scope="col" class="bg-black text-white">ORG TYPE</th>
+              <th scope="col" class="bg-black text-white">ORG NAME</th>
+              <th scope="col" class="bg-black text-white">COUNTRY</th>
+              <th scope="col" class="bg-black text-white">TYPE OF FUNDING</th>
+              <th scope="col" class="bg-black text-white">Status</th>
+              <th scope="col" class="bg-black text-white">VIEW</th>
             </tr>
             </thead>
             <tbody>
@@ -35,6 +38,23 @@
            
             </tbody>
           </table>
+          <nav *ngIf="totalPages > 1">
+            <ul class="pagination">
+              <li class="page-item" [class.disabled]="currentPage === 0">
+                <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+              </li>
+              <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" 
+                  [class.active]="i === currentPage">
+                <a class="page-link" (click)="onPageChange(i)">{{ i + 1 }}</a>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage + 1 >= totalPages">
+                <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+              </li>
+            </ul>
+          </nav>
+          <div *ngIf="projects.length === 0">
+            <p>No projects found.</p>
+          </div>
       </c-card-body>
     </c-card>
   </c-col>

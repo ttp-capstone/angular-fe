@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { jwtDecode } from "jwt-decode";
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import {  throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +12,26 @@ import { jwtDecode } from "jwt-decode";
 export class ProjectService {
   private apiUrl = "http://localhost:8005/auth/"  // Replace with your API URL
 
-  constructor(private http: HttpClient) { }
-  private createAuhtorizationHeader() {
-    const jwtToken = localStorage.getItem('jwt');
-    if (jwtToken) {
-      console.log("JWT token found in local storage", jwtToken);
-      return new HttpHeaders().set(
-        "Authorization", "Bearer " + jwtToken
-      )
-    } else {
-      console.log("JWT token not found in local storage");
-    }
-    return new HttpHeaders();
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
+  // private createAuhtorizationHeader() {
+  //   const jwtToken = localStorage.getItem('jwt');
+  //   if (jwtToken) {
+  //     console.log("JWT token found in local storage", jwtToken);
+  //     return new HttpHeaders().set(
+  //       "Authorization", "Bearer " + jwtToken
+  //     )
+  //   } else {
+  //     console.log("JWT token not found in local storage");
+      
+  //   }
+  //   return new HttpHeaders();
+  // }
 
-
+  
   createProject(projectData: any): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
     
@@ -38,11 +46,14 @@ export class ProjectService {
       return this.http.post<any>(`${this.apiUrl}my/projects`, projectData, {headers: headers });
 
       } else {
-        console.error('Username not found in JWT payload');
-        return of(null);
+        this.router.navigate(['/login']);
+        return throwError(() => new Error('Please login to continue.'));
+
       }
     }
-    return of(null);
+    this.router.navigate(['/login']);
+    return throwError(() => new Error('Please login to continue.'));
+
     
   }
 
@@ -64,11 +75,12 @@ export class ProjectService {
       return this.http.post<any>(`${this.apiUrl}my/projects/${id}`, projectData, {headers: headers });
 
       } else {
-        console.error('Username not found in JWT payload');
-        return of(null);
+        this.router.navigate(['/login']);
+        return throwError(() => new Error('Please login to continue.'));
       }
     }
-    return of(null);
+    this.router.navigate(['/login']);
+    return throwError(() => new Error('Please login to continue.'));
     
   }
 
@@ -76,7 +88,10 @@ export class ProjectService {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 
-  allProjects(): Observable<any> {
+  allProjects(page: number, size: number): Observable<any> {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
     const jwtToken = localStorage.getItem('jwt');
     const userId = null;
     if (jwtToken) {
@@ -88,72 +103,34 @@ export class ProjectService {
         'Authorization': "Bearer " + jwtToken,
         'Username': userId
       });
-      return this.http.get<any>(`${this.apiUrl}my/projects`, {headers: headers });
+      return this.http.get<any>(`${this.apiUrl}my/projects`, { headers, params });
     }else{
-      console.log("no jwt");
+      this.router.navigate(['/login']);
+        return throwError(() => new Error('Please login to continue.'));
     }
-    return of(null);
+    this.router.navigate(['/login']);
+    return throwError(() => new Error('Please login to continue.'));
   }
+
+    listNewProjects(): Observable<any> {
+     
+      const jwtToken = localStorage.getItem('jwt');
+      const userId = null;
+      if (jwtToken) {
+        const decoded: any = jwtDecode(jwtToken);
+        // console.log('Decoded user ID:', decoded.sub); // Decode JWT token
+        const userId = decoded.sub; // Assuming JWT payload has id field for user ID
+        // console.log('Decoded user ID:', userId);
+        const headers = new HttpHeaders({
+          'Authorization': "Bearer " + jwtToken,
+          'Username': userId
+        });
+        return this.http.get<any>(`${this.apiUrl}my/projects/new`, { headers });
+      }else{
+        this.router.navigate(['/login']);
+        return throwError(() => new Error('Please login to continue.'));
+      }
+      this.router.navigate(['/login']);
+      return throwError(() => new Error('Please login to continue.'));
+    }
 }
-
-// for admin //
-
-// export class ProjectServiceAdmin {
-//   private apiUrl = "http://localhost:8005/auth/admin/projects";  // Replace with your API URL
-
-//   constructor(private http: HttpClient) { }
-
-//   private createAuthorizationHeader(): HttpHeaders {
-//     const jwtToken = localStorage.getItem('jwt');
-//     if (jwtToken) {
-//       console.log("JWT token found in local storage", jwtToken);
-//       return new HttpHeaders().set("Authorization", "Bearer " + jwtToken);
-//     } else {
-//       console.log("JWT token not found in local storage");
-//     }
-//     return new HttpHeaders();
-//   }
-
-//   createProjectadmin(projectData: any): Observable<any> {
-//     const jwtToken = localStorage.getItem('jwt');
-//     if (jwtToken) {
-//       const decoded = jwtDecode(jwtToken);
-//       console.log("Decoded", decoded);
-//     }
-//     return this.http.post<any>(`${this.apiUrl}/my/projects`, projectData, {
-//       headers: this.createAuthorizationHeader()
-//     });
-//   }
-
-//   getProjectadmin(id: string): Observable<any> {
-//     return this.http.get<any>(`${this.apiUrl}/${id}`);
-//   }
-
-//   updateProjectadmin(id: string, projectData: any): Observable<any> {
-//     return this.http.put<any>(`${this.apiUrl}/${id}`, projectData, {
-//       headers: this.createAuthorizationHeader()
-//     });
-//   }
-
-//   deleteProjectadmin(id: string): Observable<any> {
-//     return this.http.delete<any>(`${this.apiUrl}/${id}`, {
-//       headers: this.createAuthorizationHeader()
-//     });
-//   }
-
-//   allProjectAdmin(): Observable<any> {
-//     const jwtToken = localStorage.getItem('jwt');
-//     if (jwtToken) {
-//       const decoded: any = jwtDecode(jwtToken);
-//       const userId = decoded.sub; // Assuming JWT payload has id field for user ID
-//       const headers = new HttpHeaders({
-//         'Authorization': "Bearer " + jwtToken,
-//         'Username': userId
-//       });
-//       return this.http.get<any>(`${this.apiUrl}/my/projects`, { headers });
-//     } else {
-//       console.log("No JWT token");
-//       return of([]); // Return an empty array as a default value
-//     }
-//   }
-// }

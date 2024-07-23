@@ -7,6 +7,8 @@ import { RouterModule, Router } from '@angular/router';
 import { TableColorDirective, TableActiveDirective, BorderDirective, AlignDirective, FormSelectDirective, FormDirective, FormLabelDirective, FormControlDirective } from '@coreui/angular';
 import { DocsExampleComponent } from '@docs-components/public-api';
 import { ProjectService } from 'src/app/service/project.service';
+import { CustomerDasboardService } from 'src/app/service/customer-dasboard.service';
+
 import {
   AvatarComponent,
   ButtonDirective,
@@ -30,6 +32,7 @@ import { IconDirective } from '@coreui/icons-angular';
 import { WidgetsBrandComponent } from '../widgets/widgets-brand/widgets-brand.component';
 import { WidgetsDropdownComponent } from '../widgets/widgets-dropdown/widgets-dropdown.component';
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { FundingService } from 'src/app/service/funding.service';
 
 
 
@@ -54,12 +57,15 @@ export class DashboardComponent implements OnInit {
   readonly #renderer: Renderer2 = inject(Renderer2);
   readonly #chartsData: DashboardChartsData = inject(DashboardChartsData);
 
-   projects: any[] = [
-    
-  ];
+  projects: any[] = [];
+  funding: any[] = [];
+  counts: { [key: string]: number } = {};
+  
 
   constructor(
     private service: ProjectService,
+    private service2: CustomerDasboardService,
+    private service3: FundingService,
     private router: Router,
   ) { }
 
@@ -68,13 +74,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     
     this.fetchAllProjects();
-
-   
+    this.dashboardData();
+    this.fetchApplidFunding();
     
   }
+
   fetchAllProjects() {
    
-    this.service.allProjects().subscribe(
+    this.service.listNewProjects().subscribe(
       (projects) => {
         this.projects = projects; // Assuming projects is an array of project objects
       },
@@ -85,6 +92,33 @@ export class DashboardComponent implements OnInit {
     );
   
 }
+fetchApplidFunding() {
+   
+  this.service3.listNewAppliedFunding().subscribe(
+    (funding) => {
+      this.funding = funding; // Assuming projects is an array of project objects
+    },
+    (error) => {
+      console.error('Could not fetch projects', error);
+      // Handle error appropriately, e.g., show error message to user
+    }
+  );
+
+}
+dashboardData() {
+   
+  this.service2.dashboardData().subscribe(
+    (counts) => {
+      this.counts = counts; 
+    },
+    (error) => {
+      console.error('Could not fetch projects', error);
+      // Handle error appropriately, e.g., show error message to user
+    }
+  );
+
+}
+
 
 
   

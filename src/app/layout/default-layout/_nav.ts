@@ -37,12 +37,12 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Account',
-    url: '/login',
+    url: 'my/account',
     iconComponent: { name: 'cil-user' },
     children: [
       {
         name: 'Settings',
-        url: '/my/account',
+        url: 'my/account',
         icon: 'nav-icon-bullet'
       },
       // {
@@ -69,7 +69,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Logout',
-    url: 'https://coreui.io/angular/docs/5.x/',
+    url: 'my/account/logout',
     iconComponent: { name: 'cil-AccountLogout' },
   }
 ];

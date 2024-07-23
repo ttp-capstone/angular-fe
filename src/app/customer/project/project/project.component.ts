@@ -16,6 +16,10 @@ import { ProjectService } from 'src/app/service/project.service';
 })
 export class ProjectComponent implements OnInit {
   projects: any[] = [];
+  totalElements: number = 0;
+  totalPages: number = 0;
+  currentPage: number = 0;
+  pageSize: number = 2;
 
   constructor(
     private service: ProjectService,
@@ -28,16 +32,24 @@ export class ProjectComponent implements OnInit {
 
   fetchAllProjects() {
    
-      this.service.allProjects().subscribe(
-        (projects) => {
-          this.projects = projects; // Assuming projects is an array of project objects
+      this.service.allProjects(this.currentPage, this.pageSize).subscribe(
+        (data:any) => {
+          this.projects = data.content; // Assuming projects is an array of project objects
+          this.totalElements = data.totalElements;
+        this.totalPages = data.totalPages;
+        this.currentPage = data.number;
         },
         (error) => {
           console.error('Could not fetch projects', error);
           // Handle error appropriately, e.g., show error message to user
         }
-      );
+      );  
     
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.fetchAllProjects();
   }
 
   editProject(project: any) {
