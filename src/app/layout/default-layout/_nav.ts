@@ -19,6 +19,11 @@ export const navItems: INavData[] = [
     url: 'my/projects',
     iconComponent: { name: 'cil-Tags' }
   },
+  {
+    name: 'Applied funding',
+    url: 'my/funding/applied',
+    iconComponent: { name: 'cil-Tags' }
+  },
   // {
   //   name: 'Funds',
   //   url: '/lok',
@@ -32,12 +37,12 @@ export const navItems: INavData[] = [
   },
   {
     name: 'My Account',
-    url: '/login',
+    url: 'my/account',
     iconComponent: { name: 'cil-user' },
     children: [
       {
         name: 'Settings',
-        url: '/my/account',
+        url: 'my/account',
         icon: 'nav-icon-bullet'
       },
       // {
@@ -64,7 +69,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Logout',
-    url: 'https://coreui.io/angular/docs/5.x/',
+    url: 'my/account/logout',
     iconComponent: { name: 'cil-AccountLogout' },
   }
 ];

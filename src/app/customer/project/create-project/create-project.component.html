@@ -2,7 +2,7 @@
     <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>
-          <strong>Angular Form Control</strong>
+          <strong>Create Project</strong>
         </c-card-header>
         <c-card-body>
             <form cForm [formGroup]="createProjectForm" (ngSubmit)="submitForm()">
@@ -21,32 +21,6 @@
                         <label for="description">Description</label>
                         <textarea cFormControl id="description" rows="3" formControlName="description"></textarea>
                       </div>
-                    <div class="mb-3">
-                        <label for="organizationType">Organization Type</label>
-                        <select aria-label="Select organization type" id="organizationType" cFormControl cSelect formControlName="organizationType">
-                            <option value="Research">Research</option>
-                            <option value="Startup">Startup</option>
-                            <option value="Company">Company</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="organizationName">Organization Name</label>
-                        <input cFormControl
-                               id="title"
-                               placeholder="Please enter organization name"
-                               type="text" formControlName="organizationName"
-                        />
-                      </div>
-                </c-col>
-                <c-col xs="6">
-                    <div class="mb-3">
-                        <label for="country">Country</label>
-                        <input cFormControl
-                               id="country"
-                               placeholder="Please enter country"
-                               type="text" formControlName="country"
-                        />
-                      </div>
                       <div class="mb-3">
                         <label for="fundingType">Type of funding looking for</label>
                         <select aria-label="Select type of funding required" id="fundingType" cFormControl cSelect formControlName="fundingType">
@@ -63,6 +37,33 @@
                             <option value="3">Finance</option>
                         </select>
                     </div>
+                </c-col>
+                <c-col xs="6">
+                  <div class="mb-3">
+                    <label for="organizationType">Organization Type</label>
+                    <select aria-label="Select organization type" id="organizationType" cFormControl cSelect formControlName="organizationType">
+                        <option value="Research">Research</option>
+                        <option value="Startup">Startup</option>
+                        <option value="Company">Company</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="organizationName">Organization Name</label>
+                    <input cFormControl
+                           id="title"
+                           placeholder="Please enter organization name"
+                           type="text" formControlName="organizationName"
+                    />
+                  </div>
+                    <div class="mb-3">
+                        <label for="country">Country</label>
+                        <input cFormControl
+                               id="country"
+                               placeholder="Please enter country"
+                               type="text" formControlName="country"
+                        />
+                      </div>
+                     
                 </c-col>
               </c-row>
           

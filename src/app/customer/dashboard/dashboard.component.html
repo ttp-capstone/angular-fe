@@ -1,77 +1,137 @@
-<app-widgets-dropdown/>
-<c-card class="my-4">
+<!-- <app-widgets-dropdown/> -->
+<div class="row">
+  <!-- card1 start -->
+  <div class="col-md-6 col-xl-3">
+    <div class="card widget-card-1">
+      <div class="card-block-small bg-c-light-blue">
+        <i class="icofont icofont-book bg-c-blue card1-icon"></i>
+        <span class="text-c-blue f-w-600">Total Projects</span>
+        <h4>{{ counts['total_project'] }}</h4>
+        <div>
+        <span class="f-left m-t-10 text-muted">
+          <i class="text-c-blue f-16 icofont icofont-warning m-r-10"></i>
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- card1 end -->
+  <!-- card2 start -->
+  <div class="col-md-6 col-xl-3">
+    <div class="card widget-card-1">
+      <div class="card-block-small bg-c-light-pink">
+        <i class="icofont icofont-money-bag bg-c-pink card1-icon"></i>
+        <span class="text-c-pink f-w-600">Total fundings applied</span>
+        <h4>{{ counts['total_appliedFunding'] }}</h4>
+        <div>
+          <span class="f-left m-t-10 text-muted">
+            <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- card2 end -->
+  <!-- card3 start -->
+  <div class="col-md-6 col-xl-3">
+    <div class="card widget-card-1">
+      <div class="card-block-small bg-c-light-green">
+        <i class="icofont icofont-ui-check bg-c-green card1-icon"></i>
+        <span class="text-c-green f-w-600">Accepted funding</span>
+        <h4>{{ counts['total_accepted']}}</h4>
+        <div>
+          <span class="f-left m-t-10 text-muted">
+            <i class="text-c-green f-16 icofont icofont-tag m-r-10"></i>Update your data
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- card3 end -->
+  <!-- card4 start -->
+  <div class="col-md-6 col-xl-3">
+    <div class="card widget-card-1">
+      <div class="card-block-small bg-c-light-yellow">
+        <i class="icofont icofont-ui-block bg-c-yellow card1-icon"></i>
+        <span class="text-c-yellow f-w-600">Rejected Funding</span>
+        <h4>{{ counts['total_rejected'] }}</h4>
+        <div>
+          <span class="f-left m-t-10 text-muted">
+            <i class="text-c-yellow f-16 icofont icofont-refresh m-r-10"></i>Update your data
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<c-row>
+<div class="col-md-6 col-xl-6">
+  <c-card class="my-4">
+    <c-card-header>
+      <strong>New Projects</strong> 
+    </c-card-header>
   <c-card-body>
     <table cTable hover striped>
       <thead>
       <tr>
-        <th scope="col"></th>
-        <th scope="col">Project Name</th>
-        <th scope="col">Application Status</th>
-        <th scope="col">Total Funding Available</th>
-        <th scope="col">View Application</th>
+        <th scope="col" class="bg-black text-white">Project Name</th>
+        <th scope="col" class="bg-black text-white">Country</th>
+        <th scope="col" class="bg-black text-white">Funding Type</th>
+        <th scope="col" class="bg-black text-white">Status</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Approved</td>
-        <td>&#36;10000</td>
-        <td><a href="">View Application</a></td>
-
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Pending</td>
-        <td>&#36;2000</td>
-        <td><a href="">View Application</a></td>
-
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td >Larry the Bird</td>
-        <td>Pending </td>
-        <td>&#36;5000</td>
-        <td><a href="">View Application</a></td>
-      </tr>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.title }}</td>
+          <td>{{ project.country }}</td>
+          <td>{{ project.fundingType }}</td>
+          <td>{{ project.status }}</td>
+          
+        </tr>
+     
       </tbody>
-    </table>
-   
+      </table>
+      <div class="button-container">
+        <a color="primary" routerLink="/my/projects">View All</a>
+      </div>
   </c-card-body>
-   <!-- <c-card-footer> -->
-    <!--
-    <c-row class="text-center mb-2" [xl]="5" [lg]="4" [sm]="2" [xs]="1" [gutter]="4">
-      <c-col>
-        <div class="text-body-secondary">Visits</div>
-        <strong>29.703 Users (40%)</strong>
-        <c-progress class="mt-2" thin color="success" value="40" aria-label="User visits" />
-      </c-col>
-      <c-col>
-        <div class="text-body-secondary">Unique</div>
-        <div class="fw-semibold text-truncate">24.093 Users (20%)</div>
-        <c-progress class="mt-2" thin color="info" value="20" aria-label="Unique users" />
-      </c-col>
-      <c-col>
-        <div class="text-body-secondary">Page views</div>
-        <div class="fw-semibold text-truncate">78.706 Views (60%)</div>
-        <c-progress class="mt-2" thin color="warning" value="60" aria-label="Page views" />
-      </c-col>
-      <c-col>
-        <div class="text-body-secondary">New Users</div>
-        <div class="fw-semibold text-truncate">22.123 Users (80%)</div>
-        <c-progress class="mt-2" thin color="danger" value="80" aria-label="New users" />
-      </c-col>
-      <c-col class="d-none d-xl-block">
-        <div class="text-body-secondary">Bounce Rate</div>
-        <div class="fw-semibold text-truncate">Average Rate (40.15%)</div>
-        <c-progress class="mt-2" thin value="40" aria-label="Bounce rate" />
-      </c-col>
-    </c-row>
-    -->
-  <!-- </c-card-footer> -->
+   
 </c-card>
-
+</div>
+<div class="col-md-6 col-xl-6">
+  <c-card class="my-4">
+    <c-card-header>
+      <strong>Applied Funding Data</strong> 
+    </c-card-header>
+  <c-card-body>
+    <table cTable hover striped>
+      <thead >
+      <tr>
+        <th scope="col" class="bg-black text-white">Project Name</th>
+        <th scope="col" class="bg-black text-white">Country</th>
+        <th scope="col" class="bg-black text-white">Funding Type</th>
+        <th scope="col" class="bg-black text-white">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fund of funding">
+          <td>{{ fund.project.title }}</td>
+          <td>{{ fund.funding.programName }}</td>
+          <td>{{ fund.status }}</td>
+          <td>{{ fund.applicationDate | date:'yyyy-MM-dd'}}</td>
+          
+        </tr>
+     
+      </tbody>
+      </table>
+      <div class="button-container">
+        <a color="primary" routerLink="/my/funding/applied">View All</a>
+      </div>
+  </c-card-body>
+   
+</c-card>
+</div>
+</c-row>
 <!-- <app-widgets-brand [withCharts]="true" /> -->
 <!--
 <c-row class="mt-4">

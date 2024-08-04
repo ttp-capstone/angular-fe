@@ -49,7 +49,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
 
   readonly icons = computed(() => {
     const currentMode = this.colorMode();
-    return this.colorModes.find(mode=> mode.name === currentMode)?.icon ?? 'cilSun';
+    return this.colorModes.find(mode=> mode.name === currentMode)?.icon ?? 'cilMoon';
   });
 
   constructor() {

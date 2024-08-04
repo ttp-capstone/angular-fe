@@ -1,15 +1,7 @@
 {
-  "name": "coreui-free-angular-admin-template",
+  "name": "ttpfunding",
   "version": "5.0.3",
-  "copyright": "Copyright 2024 creativeLabs Łukasz Holeczek",
-  "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people) and contributors",
-  "homepage": "https://coreui.io/angular",
-  "config": {
-    "theme": "default",
-    "coreui_library_short_version": "5.1",
-    "coreui_library_docs_url": "https://coreui.io/angular/docs/"
-  },
+  "copyright": "Copyright 2024 ITElites",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -37,6 +29,7 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-angular": "~5.1.1",
     "@coreui/utils": "^2.0.2",
+    "@rollup/rollup-win32-x64-msvc": "^4.19.1",
     "chart.js": "^4.4.3",
     "jwt-decode": "^4.0.0",
     "lodash-es": "^4.17.21",

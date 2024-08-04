@@ -1,0 +1,38 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-body>
+        <div class="card" style="margin-bottom: 20px;">
+          <div class="card-header">
+            <h2 class="card-title">Applied Funding</h2>
+          </div>
+          <div class="card-body">
+            <table cTable [striped]="true">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Project Title</th>
+                  <th scope="col">Program Name</th>
+                  
+                  <th scope="col">Application Date</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of funding; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ item.project.title }}</td>
+                  <td>{{ item.funding.programName }}</td>
+                  
+                  <td>{{ item.applicationDate | date:'yyyy-MM-dd' }}</td>
+                  <td>{{ item.status }}</td>
+                 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>

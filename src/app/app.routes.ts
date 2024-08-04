@@ -99,33 +99,11 @@ export const routes: Routes = [
         loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
       },
       {
-        path: 'account',
+        path: 'my/account',
         loadChildren: () => import('./customer/account/routes').then((m) => m.routes)
       },
       
-      // {
-      //   path: 'widgets',
-      //   loadChildren: () => import('./customer/widgets/routes').then((m) => m.routes)
-      // },
-      
-      // {
-      //   path: 'pages',
-      //   loadChildren: () => import('./customer/pages/routes').then((m) => m.routes)
-      // },
-      
-      {
-        path:'form',
-        loadChildren: () => import('./customer/former/routes').then((m) => m.routes)
-      },
-      {
-        path:'editForm',
-        loadChildren: () => import('./customer/editform/routes').then((m) => m.routes)
-      },
-      {
-        path:'viewapplication',
-        loadChildren: () => import('./customer/viewapplication/routes').then((m) => m.routes)
-
-      },
+   
       {
         path:'my/projects',
         loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
@@ -136,6 +114,12 @@ export const routes: Routes = [
         loadChildren: () => import('./customer/funding/routes').then((m) => m.routes)
 
       },
+      // {
+      //   path:'cust/logout',
+      //   loadChildren: () => import('./customer/account/routes').then((m) => m.routes)
+
+      // },
+      
     ]
   },
   
@@ -186,6 +170,12 @@ export const routes: Routes = [
       loadComponent: () => import('./public/pages/contact-us/contact-us.component').then(m => m.ContactUsComponent),
       data: {
         title: 'Register Page'
+      }
+    },{
+      path: '404',
+      loadComponent: () => import('./public/pages/page404/page404.component').then(m => m.Page404Component),
+      data: {
+        title: 'Page 404'
       }
     },
     

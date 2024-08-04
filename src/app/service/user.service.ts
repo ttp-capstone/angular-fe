@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { jwtDecode } from "jwt-decode";
+import {  throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,11 @@ export class UserService {
 
   private apiUrl = "http://localhost:8005/auth/"  // Replace with your API URL
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+
+  ) { }
 
   getUser(): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
@@ -25,11 +31,12 @@ export class UserService {
         });
         return this.http.get<any>(`${this.apiUrl}me`, {headers: headers });
       } else {
-        console.error('Username not found in JWT payload');
-        return of(null);
+        this.router.navigate(['/login']);
+        return throwError(() => new Error('Please login to continue.'));
       }
     }
-    return of(null);
+    this.router.navigate(['/login']);
+    return throwError(() => new Error('Please login to continue.'));
   }
 
   updateUser(id: string): Observable<any> {
@@ -50,7 +57,8 @@ export class UserService {
     //     return of(null);
     //   }
     // }
-    return of(null);
+    this.router.navigate(['/login']);
+    return throwError(() => new Error('Please login to continue.'));
     
   }
 
