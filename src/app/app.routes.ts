@@ -23,7 +23,7 @@ export const routes: Routes = [
       
       {
         path: 'admin/dashboard',
-        loadChildren: () => import('./admin/dashboard/dashboard/routes').then((m) => m.routes),
+        loadChildren: () => import('./admin/dashboard/dashboard/views/applications/routes').then((m) => m.routes),
         canActivate: [AuthGuard] // Apply the AuthGuard here
       },
       {

@@ -72,7 +72,7 @@ export class ViewApplicationComponent implements OnInit {
   }
 
   fetchApplicationDetails() {
-    this.httpClient.get<Application>(`http://localhost:8005/auth/admin/projects/${this.applicationId}`)
+    this.httpClient.get<Application>(`https://friendly-datum-429516-r9.rj.r.appspot.com/auth/admin/projects/${this.applicationId}`)
       .subscribe(
         (response) => {
           console.log(response);
@@ -90,7 +90,7 @@ export class ViewApplicationComponent implements OnInit {
     this.application.status = this.updatedStatus;
 
     // Send updated status to backend API for saving (assuming a PUT request)
-    this.httpClient.post(`http://localhost:8005/auth/admin/projects/${this.applicationId}`, this.application)
+    this.httpClient.post(`https://friendly-datum-429516-r9.rj.r.appspot.com/auth/admin/projects/${this.applicationId}`, this.application)
       .subscribe(
         (response) => {
           console.log('Status updated successfully', response);
