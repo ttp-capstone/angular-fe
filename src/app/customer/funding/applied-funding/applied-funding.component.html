@@ -3,19 +3,19 @@
     <c-card class="mb-4">
       <c-card-body>
         <div class="card" style="margin-bottom: 20px;">
-          <div class="card-header">
-            <h2 class="card-title">Applied Funding</h2>
-          </div>
+          <c-card-header>
+            <strong>All applied funding</strong> 
+          </c-card-header> 
           <div class="card-body">
             <table cTable [striped]="true">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Project Title</th>
-                  <th scope="col">Program Name</th>
+                  <th scope="col" class="bg-black text-white">#</th>
+                  <th scope="col" class="bg-black text-white">Project Title</th>
+                  <th scope="col" class="bg-black text-white">Program Name</th>
                   
-                  <th scope="col">Application Date</th>
-                  <th scope="col">Status</th>
+                  <th scope="col" class="bg-black text-white">Application Date</th>
+                  <th scope="col" class="bg-black text-white">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -30,6 +30,20 @@
                 </tr>
               </tbody>
             </table>
+            <nav *ngIf="totalPages > 1">
+              <ul class="pagination">
+                <li class="page-item" [class.disabled]="currentPage === 0">
+                  <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+                </li>
+                <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" 
+                    [class.active]="i === currentPage">
+                  <a class="page-link" (click)="onPageChange(i)">{{ i + 1 }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage + 1 >= totalPages">
+                  <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </c-card-body>

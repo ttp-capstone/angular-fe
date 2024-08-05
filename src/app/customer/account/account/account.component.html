@@ -8,15 +8,23 @@
             <form cForm [formGroup]="editAccountForm" (ngSubmit)="submitForm()">
               
               <c-row>
-                <c-col xs="12">
-                    <div class="mb-3">
-                        <label for="title">Project Title</label>
-                        <input cFormControl
-                               id="title"
-                               placeholder="Please enter title"
-                               type="text" formControlName="title"
-                        />
-                      </div>
+                <c-col xs="6">
+                  <div class="mb-3">
+                    <label for="fullname">Full Name</label>
+                    <input cFormControl
+                           id="fullName"
+                           placeholder="Please enter fullname"
+                           type="text" formControlName="fullName"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input cFormControl
+                           id="email"
+                           placeholder="Please enter email"
+                           type="text" formControlName="email"  readonly            
+                           />
+                  </div>
                    
                    
                 </c-col>
@@ -26,6 +34,9 @@
               <input cButton color="primary" type="submit" value="Submit"/>
 
             </form>
+            <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+              Details updated successfully!
+            </div>
         </c-card-body>
       </c-card>
     </c-col>

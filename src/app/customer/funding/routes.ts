@@ -1,5 +1,6 @@
 // src/app/routes.ts
 import { Routes } from '@angular/router';
+import { AuthGuardUser } from '../../auth.guard.user'; // Import the AuthGuard
 
 export const routes: Routes = [
   {
@@ -7,6 +8,7 @@ export const routes: Routes = [
     data: {
       title: 'funding'
     },
+    canActivate: [AuthGuardUser],
     children: [
       {
         path: '',
@@ -19,6 +21,7 @@ export const routes: Routes = [
         data: {
           title: 'project'
         }
+        , canActivate: [AuthGuardUser]
       },
       
       {
@@ -27,6 +30,7 @@ export const routes: Routes = [
         data: {
           title: 'project'
         }
+        , canActivate: [AuthGuardUser]
       },
       {
         path: 'applied',
@@ -34,6 +38,7 @@ export const routes: Routes = [
         data: {
           title: 'project'
         }
+        , canActivate: [AuthGuardUser]
       }
     ]
   }

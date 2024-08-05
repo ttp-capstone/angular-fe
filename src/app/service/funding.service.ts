@@ -83,8 +83,9 @@ export class FundingService {
           'Authorization': "Bearer " + jwtToken,
           'Username': username
         });
-        return this.http.post<any>(`${this.apiUrl}apply/funding/${fundingId}/${projectId}`, {headers: headers});
+        console.log(username);
 
+        return this.http.post<any>(`${this.apiUrl}apply/funding/${fundingId}/${projectId}`,null, {headers});
       } else {
         this.router.navigate(['/login']);
         return throwError(() => new Error('Please login to continue.'));

@@ -25,6 +25,10 @@ import { FundingService } from 'src/app/service/funding.service';
 })
 export class AppliedFundingComponent {
   funding: any[] = [];
+  totalElements: number = 0;
+  totalPages: number = 0;
+  currentPage: number = 0;
+  pageSize: number = 2;
 
   constructor(private service: FundingService) { }
 
@@ -34,13 +38,20 @@ export class AppliedFundingComponent {
 
   fetchAllAppliedFunding() {
     this.service.fetchAllAppliedFunding().subscribe(
-      (funding) => {
-        this.funding = funding; // Ensure this matches the data structure
+      (data:any) => {
+        this.funding = data.content; // Assuming projects is an array of project objects
+        this.totalElements = data.totalElements;
+        this.totalPages = data.totalPages;
+        this.currentPage = data.number;
       },
       (error) => {
         console.error('Could not fetch funding', error);
       }
     );
+  }
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.fetchAllAppliedFunding();
   }
 }
 

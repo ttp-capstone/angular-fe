@@ -54,6 +54,9 @@
                 <button *ngIf="!appliedFunding" class="btn btn-primary mr-2" (click)="applyFunding(funding.id, projectId)">Apply</button>
                 <button class="btn btn-secondary" (click)="goBack()">Back</button>
             </div>
+            <div *ngIf="updateSuccess" class="alert alert-success mt-3" role="alert">
+                Application updated successfully!
+              </div>
             </div>
   </c-card-body>
   </c-card>

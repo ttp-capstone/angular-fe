@@ -19,7 +19,8 @@ export class ViewFundingComponent {
   appliedFunding: any;
   projectId: string = '';
   fundingId: string = '';
-
+  updateSuccess: boolean = false;
+  
   constructor(
     private route: ActivatedRoute,
     private service: FundingService,
@@ -60,6 +61,10 @@ export class ViewFundingComponent {
       (funding) => {
         this.funding = funding; 
         console.log("funding"+funding);
+        this.updateSuccess = true;
+            setTimeout(() => {
+              this.updateSuccess = false; // Reset update success message after 3 seconds
+            }, 3000);
       },
       (error) => {
         console.error('Could not fetch funding details', error);
