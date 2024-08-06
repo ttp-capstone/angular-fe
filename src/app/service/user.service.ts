@@ -20,7 +20,7 @@ export class UserService {
 
   getUser(): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
-    
+
     if (jwtToken) {
       const decoded = jwtDecode(jwtToken);
       const username = decoded.sub;
@@ -41,7 +41,7 @@ export class UserService {
 
   updateUser(userData: any): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
-    
+
     if (jwtToken) {
       const decoded = jwtDecode(jwtToken);
       const username = decoded.sub;
@@ -59,7 +59,7 @@ export class UserService {
     }
     this.router.navigate(['/login']);
     return throwError(() => new Error('Please login to continue.'));
-    
+
   }
 
 }

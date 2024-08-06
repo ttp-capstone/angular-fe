@@ -14,8 +14,11 @@
 
 <div class="final">
 
-    <div class="container">
+    <div class="container form-container">
     <h2>Login</h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <div class="form-group">
             <label for="email">Email</label>
