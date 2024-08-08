@@ -38,9 +38,10 @@
             ],
             "styles": [
               "src/scss/styles.scss",
-              "src/assets/icons/icofont/css/icofont.scss"
+              "src/assets/icons/icofont/css/icofont.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"],
             "allowedCommonJsDependencies": []
           },
           "configurations": {

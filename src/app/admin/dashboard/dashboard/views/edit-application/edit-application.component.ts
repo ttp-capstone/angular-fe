@@ -78,7 +78,7 @@ export class EditApplicationComponent implements OnInit {
   }
 
   fetchApplicationDetails() {
-    this.httpClient.get<Application>(`https://friendly-datum-429516-r9.rj.r.appspot.com/auth/admin/projects/${this.applicationId}`)
+    this.httpClient.get<Application>(`http://localhost:8005/auth/admin/projects/${this.applicationId}`)
       .subscribe(
         (response) => {
           this.application = response;
@@ -93,7 +93,7 @@ export class EditApplicationComponent implements OnInit {
   onSubmit() {
     if (this.editApplicationForm.valid) {
       const updatedApplication = { ...this.application, ...this.editApplicationForm.value };
-      this.httpClient.post(`https://friendly-datum-429516-r9.rj.r.appspot.com/auth/admin/projects/${this.applicationId}`, updatedApplication)
+      this.httpClient.post(`http://localhost:8005/auth/admin/projects/${this.applicationId}`, updatedApplication)
         .subscribe(
           (response) => {
             console.log('Application updated successfully', response);
