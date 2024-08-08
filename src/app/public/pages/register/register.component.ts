@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     this.service.register(this.registerForm.value).subscribe(
       (response) => {
         if (response.id != null) {
-          alert("Hello " + response.fullName);
+          // alert("Hello " + response.fullName);
           this.router.navigateByUrl("my/dashboard");
         }
       },

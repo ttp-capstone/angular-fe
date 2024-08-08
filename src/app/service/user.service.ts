@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  private apiUrl = "http://localhost:8005/auth/"  // Replace with your API URL
+  private apiUrl = "http://localhost:8005/users/"  // Replace with your API URL
 
   constructor(
     private http: HttpClient,
@@ -20,7 +20,7 @@ export class UserService {
 
   getUser(): Observable<any> {
     const jwtToken = localStorage.getItem('jwt');
-    
+
     if (jwtToken) {
       const decoded = jwtDecode(jwtToken);
       const username = decoded.sub;
@@ -39,27 +39,27 @@ export class UserService {
     return throwError(() => new Error('Please login to continue.'));
   }
 
-  updateUser(id: string): Observable<any> {
-    // const jwtToken = localStorage.getItem('jwt');
-    
-    // if (jwtToken) {
-    //   const decoded = jwtDecode(jwtToken);
-    //   const username = decoded.sub;
-    //   if (username) {
-    //     const headers = new HttpHeaders({
-    //       'Authorization': "Bearer " + jwtToken,
-    //       'Username': username
-    //     });
-    //   return this.http.post<any>(`${this.apiUrl}my/projects/${id}`, projectData, {headers: headers });
+  updateUser(userData: any): Observable<any> {
+    const jwtToken = localStorage.getItem('jwt');
 
-    //   } else {
-    //     console.error('Username not found in JWT payload');
-    //     return of(null);
-    //   }
-    // }
+    if (jwtToken) {
+      const decoded = jwtDecode(jwtToken);
+      const username = decoded.sub;
+      if (username) {
+        const headers = new HttpHeaders({
+          'Authorization': "Bearer " + jwtToken,
+          'Username': username
+        });
+      return this.http.post<any>(`${this.apiUrl}me`, userData, {headers: headers });
+
+      } else {
+        console.error('Username not found in JWT payload');
+        return of(null);
+      }
+    }
     this.router.navigate(['/login']);
     return throwError(() => new Error('Please login to continue.'));
-    
+
   }
 
 }

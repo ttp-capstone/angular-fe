@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 import {DefaultLayoutComponentAdmin} from '../app/admin/dashboard/layout/default-layout/default-layout.component'
 import { AuthGuard } from './auth.gaurd.admin'; // Import the AuthGuard
+import { AuthGuardUser } from './auth.guard.user'; // Import the AuthGuard
 
 export const routes: Routes = [
   {
@@ -15,7 +16,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponentAdmin,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AuthGuardUser],
     data: {
       title: 'Home'
     },
@@ -96,22 +97,22 @@ export const routes: Routes = [
       
       {
         path: 'my/dashboard',
-        loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes)
+        loadChildren: () => import('./customer/dashboard/routes').then((m) => m.routes), canActivate: [AuthGuardUser]
       },
       {
         path: 'my/account',
-        loadChildren: () => import('./customer/account/routes').then((m) => m.routes)
+        loadChildren: () => import('./customer/account/routes').then((m) => m.routes), canActivate: [AuthGuardUser]
       },
       
    
       {
         path:'my/projects',
-        loadChildren: () => import('./customer/project/routes').then((m) => m.routes)
+        loadChildren: () => import('./customer/project/routes').then((m) => m.routes), canActivate: [AuthGuardUser]
 
       },
       {
         path:'my/funding',
-        loadChildren: () => import('./customer/funding/routes').then((m) => m.routes)
+        loadChildren: () => import('./customer/funding/routes').then((m) => m.routes), canActivate: [AuthGuardUser]
 
       },
       // {

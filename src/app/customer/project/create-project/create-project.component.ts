@@ -6,6 +6,7 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ProjectService } from 'src/app/service/project.service';
 import { RouterModule, Router } from '@angular/router';
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: 'app-create-project',
@@ -19,12 +20,29 @@ export class CreateProjectComponent {
   createProjectForm!: FormGroup;
 
   constructor(
+      
     private service: ProjectService,
     private fb: FormBuilder,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    const jwtToken = localStorage.getItem('jwt');
+    let userId: string | null = null;
+    if (jwtToken) {
+      try {
+        const decodedToken: any = jwtDecode(jwtToken);
+        userId = decodedToken.sub;
+      } catch (error) {
+        console.error('Invalid token:', error);
+        this.router.navigate(['/login']);
+      }
+    }
+
+    if (!userId) {
+      this.router.navigate(['/login']);
+    }
+
     this.createProjectForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],

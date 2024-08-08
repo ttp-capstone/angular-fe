@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <c-card class="my-4">
   <table cTable hover striped>
     <thead>
@@ -21,6 +22,48 @@
       </tr>
     </tbody>
   </table>
+=======
+<!-- <app-widgets-dropdown-users/> -->
+<div class="my-4">
+  <div class="my-4 d-flex align-items-center">
+    <input [formControl]="searchControl" placeholder="Search by User Email or Name" class="form-control me-2">
+    <!-- <button class="btn btn-primary" (click)="onCreate()">
+      <i class="fas fa-plus"></i>
+    </button> -->
+  </div>
+</div>
+
+<!-- <div *ngFor="let user of filteredUsers">
+
+  <p>{{ user.fullName }} - {{ user.email }}</p>
+</div> -->
+
+<c-card class="my-4">
+    <table cTable hover striped>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">User ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Full Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.fullName }}</td>
+            <td>
+              <!-- (click)="deleteUser(user.id)" -->
+              <button  class="custom-delete-btn">
+                <span class="custom-delete-icon">&times;</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+>>>>>>> 6143b0a5e25c4eb4c617a263ba06a9fb8fba801c
 </c-card>
 
 <!-- Email Form Modal -->
