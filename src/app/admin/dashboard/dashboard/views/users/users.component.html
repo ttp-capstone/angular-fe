@@ -1,21 +1,53 @@
-<!-- <app-widgets-dropdown-users/> -->
 <c-card class="my-4">
-    <table cTable hover striped>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">User ID</th>
-            <th scope="col">Email</th>
-            <th scope="col">Full Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <th scope="row">{{ user.id }}</th>
-            <td>{{ user.id }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.fullName }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <table cTable hover striped>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">User ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openEmailForm(user.email)">Send Email</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </c-card>
+
+<!-- Email Form Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailModalLabel">Send Email</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+          <div class="mb-3">
+            <label for="toEmail" class="form-label">To</label>
+            <input type="email" id="toEmail" class="form-control" formControlName="to_email" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" class="form-control" formControlName="subject">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" class="form-control" formControlName="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

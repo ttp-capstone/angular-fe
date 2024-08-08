@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ProjectServiceAdmin {
-  private apiUrl = "https://friendly-datum-429516-r9.rj.r.appspot.com/auth";  // Replace with your API URL
+  private apiUrl = "http://localhost:8005/auth";  // Replace with your API URL
 
   constructor(private http: HttpClient, private router: Router) { }
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CommonModule, DOCUMENT, NgStyle } from '@angular/common';
 import { DestroyRef, effect, inject, OnInit, Renderer2, signal, WritableSignal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { WidgetsDropdownComponentUsers } from '../widgets/widgets-dropdown-users/widgets-dropdown-users.component';
 import { ChartOptions } from 'chart.js';
@@ -27,6 +27,7 @@ import {
 import { IconDirective } from '@coreui/icons-angular';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './users.service';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 interface User {
   id: number;
@@ -44,8 +45,15 @@ interface User {
 
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  emailForm: FormGroup;
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) {}
+  constructor(private httpClient: HttpClient, private authService: AuthService, private fb: FormBuilder) {
+    this.emailForm = this.fb.group({
+      to_email: [''],
+      subject: [''],
+      message: ['']
+    });
+  }
 
   ngOnInit(): void {
     this.fetchData();
@@ -67,5 +75,31 @@ export class UsersComponent implements OnInit {
         // Handle error here (e.g., show error message to user)
       }
     );
+  }
+
+  openEmailForm(email: string): void {
+    this.emailForm.patchValue({ to_email: email });
+    const emailModal = new bootstrap.Modal(document.getElementById('emailModal') as HTMLElement);
+    emailModal.show();
+  }
+
+  sendEmail(): void {
+    const serviceID = 'service_mc2u6g4'; // Replace with your actual service ID
+    const templateID = 'template_t1pvqyc'; // Replace with your actual template ID
+    const userID = '_EGWGWXs_DdsjGnat'; // Replace with your actual user ID
+
+    const templateParams = this.emailForm.value;
+
+    emailjs.send(serviceID, templateID, templateParams, userID)
+      .then((result: EmailJSResponseStatus) => {
+        console.log('Email sent successfully', result.text);
+        alert('Email Sent Successfully');
+        this.emailForm.reset();
+        const emailModal = bootstrap.Modal.getInstance(document.getElementById('emailModal') as HTMLElement);
+        emailModal.hide();
+      }, (error) => {
+        console.error('Email sending failed', error.text);
+        // Handle error here (e.g., show error message to user)
+      });
   }
 }

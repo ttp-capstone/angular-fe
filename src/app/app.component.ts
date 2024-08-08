@@ -13,7 +13,7 @@ import { iconSubset } from './icons/icon-subset';
   imports: [RouterOutlet, HttpClientModule]
 })
 export class AppComponent implements OnInit {
-  title = 'TTP-CustomerDashboard';
+  title = 'TTP'
 
   constructor(
     private router: Router,
