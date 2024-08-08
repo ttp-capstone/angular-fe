@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<c-card class="my-4">
+<!-- <c-card class="my-4">
   <table cTable hover striped>
     <thead>
       <tr>
@@ -21,8 +20,7 @@
         </td>
       </tr>
     </tbody>
-  </table>
-=======
+  </table> -->
 <!-- <app-widgets-dropdown-users/> -->
 <div class="my-4">
   <div class="my-4 d-flex align-items-center">
@@ -55,15 +53,17 @@
             <td>{{ user.email }}</td>
             <td>{{ user.fullName }}</td>
             <td>
+              <button class="btn btn-primary" (click)="openEmailForm(user.email)">Send Email</button>
+            </td>
+            <!-- <td> -->
               <!-- (click)="deleteUser(user.id)" -->
-              <button  class="custom-delete-btn">
+              <!-- <button  class="custom-delete-btn">
                 <span class="custom-delete-icon">&times;</span>
               </button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
->>>>>>> 6143b0a5e25c4eb4c617a263ba06a9fb8fba801c
 </c-card>
 
 <!-- Email Form Modal -->
