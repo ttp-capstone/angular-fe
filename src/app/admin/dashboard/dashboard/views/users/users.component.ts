@@ -67,9 +67,7 @@ export class UsersComponent implements OnInit {
         this.filterUsers(value as string);
       });
   }
-  // filterUsers(arg0: string) {
-  //   throw new Error('Method not implemented.');
-  // }
+
 
   filterUsers(searchTerm: string) {
     if (!searchTerm) {
